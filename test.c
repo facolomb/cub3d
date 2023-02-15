@@ -15,8 +15,8 @@ int	tablen(char **tab)
 
 void	DDA(int x0, int y0, int x1, int y1, t_mlx *mlx)
 {
-	t_rayon	r;
-	int		i = 0;
+	t_draw_line	r;
+	int			i = 0;
 
 	r.dx = x1 - x0;
 	r.dy = y1 - y0;

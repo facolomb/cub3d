@@ -27,7 +27,7 @@ typedef struct s_mlx
 	t_img 	img;
 }	t_mlx;
 
-typedef struct s_rayon
+typedef struct s_draw_line
 {
 	int dx;
 	int dy;
@@ -36,6 +36,6 @@ typedef struct s_rayon
 	float yinc;
 	float x;
 	float y;
-}	t_rayon;
+}	t_draw_line;
 
 #endif
