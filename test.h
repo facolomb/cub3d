@@ -1,5 +1,5 @@
 
-#ifndef TEST_H
+#ifndef TEST_H   
 #define TEST_H
 #include "mlx/mlx.h"
 #include "libft/libft.h"
@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080
+#define WIN_WIDTH 400
+#define WIN_HEIGHT 400
 
 
 typedef struct s_img

@@ -1,5 +1,6 @@
 
 #include "test.h"
+#include "parsing.h"
 
 int	tablen(char **tab)
 {
@@ -130,11 +131,12 @@ void	init_window(t_mlx *mlx)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 	char	**map;
 
+	parsing(argc, argv);
 	map = ft_calloc(sizeof (char *), 5);
 	map[0] = ft_strdup("11111");
 	map[1] = ft_strdup("10101");

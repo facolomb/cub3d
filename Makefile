@@ -1,6 +1,7 @@
 NAME = test
 
-SRC = test.c
+SRC = test.c \
+		parsing.c
 
 MLX_PATH = ./mlx
 
