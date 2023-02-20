@@ -1,7 +1,9 @@
 NAME = test
 
 SRC = test.c \
-		parsing.c
+		parsing.c \
+		cub_gnl.c \
+		cub_gnl_utils.c
 
 MLX_PATH = ./mlx
 

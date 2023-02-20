@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/20 15:06:05 by mravera          ###   ########.fr       */
+/*   Updated: 2023/02/20 16:41:43 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	parsing(int argc, char **argv)
 	int		fd;
 
 	fd = check_cub(argc, argv);
+	printf("1. %s\n", get_next_line(fd));
+	printf("2. %s\n", get_next_line(fd));
 	check_close(fd);
 	return (0);
 }
@@ -36,6 +38,8 @@ int	check_cub(int argc, char **argv)
 			if (fd >= 0)
 				return (fd);
 		}
+		else
+			printf("%s is not a .cub file.\n", argv[i]);
 		i++;
 		if (i < argc)
 			printf("\nChecking next file...\n");
