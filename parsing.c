@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/15 15:58:37 by mravera          ###   ########.fr       */
+/*   Updated: 2023/02/20 15:06:05 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,63 @@
 
 int	parsing(int argc, char **argv)
 {
-	check_file(argc, argv);
+	int		fd;
+
+	fd = check_cub(argc, argv);
+	check_close(fd);
 	return (0);
 }
 
-int	check_file(int argc, char **argv)
+int	check_cub(int argc, char **argv)
 {
+	int		fd;
 	int		i;
 
-	i = 0;
-	argv++;
-	while (*argv)
+	i = 1;
+	while (argv[i])
 	{
-		if (is_cub(*argv))
-			i++;
-		argv++;
+		if (is_cub(argv[i]))
+		{
+			fd = check_open(argv[i]);
+			if (fd >= 0)
+				return (fd);
+		}
+		i++;
+		if (i < argc)
+			printf("\nChecking next file...\n");
+		else
+			printf("\nNo valid .cub found, aborting...\n");
 	}
-	if (i == 1 && argc == 2)
-		printf(".cub found\n");
-	if (i >= 1 && argc > 2)
-		printf("using first valid .cub argument...\n");
-	if (i <= 0)
-		printf("no valid .cub found, aborting...\n");
+	exit(1);
+}
+
+int	check_open(char *file)
+{
+	int	fd;
+
+	printf("Opening file ----> [%s]...\n", file);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error opening file ");
+		return (-1);
+	}
+	else
+		printf("File is open.\n");
+	return (fd);
+}
+
+int	check_close(int fd)
+{
+	printf("Closing file...\n");
+	if (close(fd) != 0)
+	{
+		perror("Error while closing the file ");
+		printf("Exiting...\n");
+		exit(1);
+	}
+	else
+		printf("File closed.\n");
 	return (0);
 }
 
