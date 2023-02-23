@@ -133,6 +133,13 @@ void	init_window(t_mlx *mlx)
 
 int	main(int argc, char **argv)
 {
+	parsing(argc, argv);
+	return (0);
+}
+
+/*
+int	main(int argc, char **argv)
+{
 	t_mlx	mlx;
 	char	**map;
 
@@ -155,3 +162,4 @@ int	main(int argc, char **argv)
 	free(map);
 	return (0);
 }
+*/

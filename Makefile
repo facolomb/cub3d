@@ -4,7 +4,10 @@ SRC = test.c \
 		parsing.c \
 		cub_gnl.c \
 		cub_gnl_utils.c \
-		check_file.c
+		check_args.c \
+		videur.c \
+		cub_utils.c \
+		get_clean_buf.c
 
 MLX_PATH = ./mlx
 
