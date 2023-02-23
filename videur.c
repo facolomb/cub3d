@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:53:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 15:39:17 by mravera          ###   ########.fr       */
+/*   Updated: 2023/02/23 22:42:51 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 int	videur(char **buf, t_data *data)
 {
-	int		i;
-
-	i = 0;
-	if (is_key(buf[0]))
+	if (is_nsewkey(buf[0]) || is_fckey(buf[0]))
 	{
-		if (buf[1] != NULL)
+		if (buf[1] == NULL)
+			printf("\n[%s]\nError\nNo path provided.\n", buf[0]);
+		else if (is_nsewkey(buf[0]))
 			sort_nsew(buf, data);
-		printf("\n[%s]\nError\nNo path provided.\n", buf[0]);
+		else if (is_fckey(buf[0]))
+			sort_fc(buf, data);
 	}
 	else
 		printf("\n[%s]\nError\nUnknown key.\n", buf[0]);
@@ -31,55 +31,94 @@ int	videur(char **buf, t_data *data)
 
 int	sort_nsew(char **str, t_data *data)
 {
-	if (!ft_strncmp(str[0], "N", 2) || !ft_strncmp(str[0], "NO", 3))
+	if (!is_nsewkey(str[0]))
 	{
-		if (check_xpm(str[1]))
+		printf("Error\n666 sort_nsew()\n");
+		return (1);
+	}
+	if (check_xpm(str))
+	{
+		if (!ft_strncmp(str[0], "N", 2) || !ft_strncmp(str[0], "NO", 3))
 			data->no = ft_strdup(str[1]);
-	}
-	else if (!ft_strncmp(str[0], "S", 2) || !ft_strncmp(str[0], "SO", 3))
-	{
-		if (check_xpm(str[1]))
+		if (!ft_strncmp(str[0], "S", 2) || !ft_strncmp(str[0], "SO", 3))
 			data->so = ft_strdup(str[1]);
-	}
-	else if (!ft_strncmp(str[0], "E", 2) || !ft_strncmp(str[0], "EA", 3))
-	{
-		if (check_xpm(str[1]))
+		if (!ft_strncmp(str[0], "E", 2) || !ft_strncmp(str[0], "EA", 3))
 			data->ea = ft_strdup(str[1]);
-	}
-	else if (!ft_strncmp(str[0], "W", 2) || !ft_strncmp(str[0], "WE", 3))
-	{
-		if (check_xpm(str[1]))
+		if (!ft_strncmp(str[0], "W", 2) || !ft_strncmp(str[0], "WE", 3))
 			data->we = ft_strdup(str[1]);
+		printf("[%s->%s] OK\n", str[0], str[1]);
 	}
-	else
-		printf("FATAL ERROR\n");
 	return (0);
 }
 
-int	check_xpm(char *path)
+int	sort_fc(char **str, t_data *data)
+{
+	if (!is_fckey(str[0]))
+	{
+		printf("Error\n666 sort_fc()");
+		return (1);
+	}
+	if (check_rgb(str))
+	{
+		if (!ft_strncmp(str[0], "F", 2))
+			data->f = ft_strdup(str[1]);
+		if (!ft_strncmp(str[0], "C", 2))
+			data->c = ft_strdup(str[1]);
+		printf("[%s->%s] OK\n", str[0], str[1]);
+	}
+	return (0);
+}
+
+int	check_xpm(char **path)
 {
 	int	i;
 	int	fd;
 
-	i = ft_strlen(path);
+	i = ft_strlen(path[1]);
 	if (i < 5)
+		return (!printf("\n[%s->%s]\nError\nPath too short to be valid.\n",
+				path[0], path[1]));
+	if (path[1][i - 1] == 'm' && path[1][i - 2] == 'p'
+		&& path[1][i - 3] == 'x' && path[1][i - 4] == '.')
 	{
-		printf("\n[%s]\nError\nPath too short to be valid.\n\n", path);
-		return (0);
-	}
-	if (path[i - 1] == 'm' && path[i - 2] == 'p'
-		&& path[i - 3] == 'x' && path[i - 4] == '.')
-	{
-		fd = open(path, O_RDONLY);
+		fd = open(path[1], O_RDONLY);
 		if (fd < 0)
 		{
-			printf("\n[%s]\n", path);
+			printf("\n[%s->%s]\n", path[0], path[1]);
 			perror("Error\n");
 			return (0);
 		}
 		return (!close(fd));
 	}
 	else
-		printf("\n[%s]\nError\nPath does not lead to a .xpm file.\n\n", path);
+		printf("\n[%s->%s]\nError\nPath does not lead to a .xpm file.\n",
+			path[0], path[1]);
 	return (0);
+}
+
+int	check_rgb(char **str)
+{
+	char	**buf;
+	int		i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	if (!str_isdigit(str[1]))
+	{
+		printf("[%s->%s] Unknown charracter in rgb code.\n", str[0], str[1]);
+		return (0);
+	}
+	buf = ft_split(str[1], ',');
+	while (buf[i] != NULL)
+		i++;
+	if (i != 3 || ft_atoi(buf[0]) < 0 || ft_atoi(buf[0]) > 255
+		|| ft_atoi(buf[1]) < 0 || ft_atoi(buf[1]) > 255
+		|| ft_atoi(buf[2]) < 0 || ft_atoi(buf[2]) > 255)
+	{
+		printf("[%s->%s] Invalid RGB code.\n", str[0], str[1]);
+		return (0);
+	}
+	freetab(buf);
+	return (1);
 }

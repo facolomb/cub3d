@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 14:36:21 by mravera          ###   ########.fr       */
+/*   Updated: 2023/02/23 22:32:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,26 @@ char			*ft_read_and_save(int fd, char *frigo);
 //parsing.c
 int				parsing(int argc, char **argv);
 int				parse(int fd, t_data *data);
-int				is_nsewcf(char *str);
-int				is_map(char *str);
-int				is_key(char *str);
+int				free_data(t_data *data);
 
 //videur.c
 int				videur(char **buf, t_data *data);
 int				sort_nsew(char **str, t_data *data);
-int				check_xpm(char *path);
+int				sort_fc(char **str, t_data *data);
+int				check_xpm(char **path);
+int				check_rgb(char **path);
 
 //check_args.c
 int				check_cub(int argc, char **argv);
 int				check_open(char *file);
 int				check_close(int fd);
 int				is_cub(char *str);
+
+//parsing_utils.c
+int				is_nsewkey(char *str);
+int				is_fckey(char *str);
+int				is_map(char *str);
+int				str_isdigit(char *str);
 
 //cub_utils.c
 void			freetab(char **tab);

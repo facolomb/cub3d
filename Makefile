@@ -7,7 +7,8 @@ SRC = test.c \
 		check_args.c \
 		videur.c \
 		cub_utils.c \
-		get_clean_buf.c
+		get_clean_buf.c \
+		parsing_utils.c
 
 MLX_PATH = ./mlx
 

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:28:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 14:27:01 by mravera          ###   ########.fr       */
+/*   Updated: 2023/02/23 19:51:31 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ char	**get_clean_buf(int fd)
 
 	treuse = get_next_line(fd);
 	while (treuse[0] == '\n')
+	{
+		free(treuse);
 		treuse = get_next_line(fd);
+	}
 	treuse = rm_lastbsn(treuse);
 	res = ft_split(treuse, ' ');
 	free(treuse);
