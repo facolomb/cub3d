@@ -2,6 +2,16 @@
 #include "test.h"
 #include "parsing.h"
 
+int	main(int argc, char **argv)
+{
+	if (argc > 1)
+		parsing(argc, argv);
+	else
+		printf("Error\nNeed a .cub configuration file as argument\n");
+	return (0);
+}
+
+/*
 int	tablen(char **tab)
 {
 	int	count;
@@ -130,12 +140,9 @@ void	init_window(t_mlx *mlx)
 		}
 	}
 }
+*/
 
-int	main(int argc, char **argv)
-{
-	parsing(argc, argv);
-	return (0);
-}
+
 
 /*
 int	main(int argc, char **argv)
