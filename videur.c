@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:53:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 22:42:51 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/01 02:21:19 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	sort_nsew(char **str, t_data *data)
 		printf("Error\n666 sort_nsew()\n");
 		return (1);
 	}
-	if (check_xpm(str))
+	if (check_xpm(str) && !alrdy_set(str, data))
 	{
 		if (!ft_strncmp(str[0], "N", 2) || !ft_strncmp(str[0], "NO", 3))
 			data->no = ft_strdup(str[1]);
@@ -55,7 +55,7 @@ int	sort_fc(char **str, t_data *data)
 {
 	if (!is_fckey(str[0]))
 	{
-		printf("Error\n666 sort_fc()");
+		printf("\nError\n666 sort_fc()\n");
 		return (1);
 	}
 	if (check_rgb(str))
@@ -64,7 +64,7 @@ int	sort_fc(char **str, t_data *data)
 			data->f = ft_strdup(str[1]);
 		if (!ft_strncmp(str[0], "C", 2))
 			data->c = ft_strdup(str[1]);
-		printf("[%s->%s] OK\n", str[0], str[1]);
+		printf("\n[%s->%s] OK\n", str[0], str[1]);
 	}
 	return (0);
 }
@@ -106,7 +106,7 @@ int	check_rgb(char **str)
 		return (0);
 	if (!str_isdigit(str[1]))
 	{
-		printf("[%s->%s] Unknown charracter in rgb code.\n", str[0], str[1]);
+		printf("\n[%s->%s]\nUnknown charracter in rgb code.\n", str[0], str[1]);
 		return (0);
 	}
 	buf = ft_split(str[1], ',');
@@ -116,7 +116,8 @@ int	check_rgb(char **str)
 		|| ft_atoi(buf[1]) < 0 || ft_atoi(buf[1]) > 255
 		|| ft_atoi(buf[2]) < 0 || ft_atoi(buf[2]) > 255)
 	{
-		printf("[%s->%s] Invalid RGB code.\n", str[0], str[1]);
+		printf("\n[%s->%s]\nInvalid RGB code.\n", str[0], str[1]);
+		freetab(buf);
 		return (0);
 	}
 	freetab(buf);

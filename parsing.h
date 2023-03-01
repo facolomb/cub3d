@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 22:32:07 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/01 01:39:36 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int				is_nsewkey(char *str);
 int				is_fckey(char *str);
 int				is_map(char *str);
 int				str_isdigit(char *str);
+int				alrdy_set(char **str, t_data *data);
 
 //cub_utils.c
 void			freetab(char **tab);

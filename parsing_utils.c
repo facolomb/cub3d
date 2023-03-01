@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:57:40 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 22:42:44 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/01 02:15:09 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,25 @@ int	str_isdigit(char *str)
 			i++;
 	}
 	return (1);
+}
+
+int	alrdy_set(char **str, t_data *data)
+{
+	if ((!ft_strncmp(str[0], "N", 2) || !ft_strncmp(str[0], "NO", 3))
+		&& data->no != 0)
+		return (printf("\n[%s->%s]\nTexture already set.\n", str[0], str[1]));
+	else if ((!ft_strncmp(str[0], "S", 2) || !ft_strncmp(str[0], "SO", 3))
+		&& data->so != 0)
+		return (printf("\n[%s->%s]\nTexture already set.\n", str[0], str[1]));
+	else if ((!ft_strncmp(str[0], "E", 2) || !ft_strncmp(str[0], "EA", 3))
+		&& data->ea != 0)
+		return (printf("\n[%s->%s]\nTexture already set.\n", str[0], str[1]));
+	else if ((!ft_strncmp(str[0], "W", 2) || !ft_strncmp(str[0], "WE", 3))
+		&& data->we != 0)
+		return (printf("\n[%s->%s]\nTexture already set.\n", str[0], str[1]));
+	else if (!ft_strncmp(str[0], "F", 2) && data->f != 0)
+		return (printf("\n[%s->%s]\nF color already set.\n", str[0], str[1]));
+	else if (!ft_strncmp(str[0], "C", 2) && data->c != 0)
+		return (printf("\n[%s->%s]\nC color already set.\n", str[0], str[1]));
+	return (0);
 }

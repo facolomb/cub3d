@@ -1,8 +1,19 @@
 NO ./img/xpm.xpm
 S ./img/xpm2.xpm
 E ./img/xpm3.xpm
-WE ./img/xpm4.xpm
-F 000,111,222
+Ef ./img/xpm3.xpm
+
+E ./img/xpm3.xpm
+
+
+slkdfj
+asdflkjlf
+
+asdflkjlf
+
+S ./img/xpm.xpm
+F 010,101,256
+r 000,111,255
 C 0,24,255
 
 1111111111
