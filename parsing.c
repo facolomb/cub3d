@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/04 00:24:13 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:43:30 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	parse(int fd, t_data *data)
 			free(buf);
 		buf = get_next_line(fd);
 	}
-	get_map(fd, data);
+	get_map(buf, fd, data);
 	if (buf)
 		free(buf);
 	return (0);
