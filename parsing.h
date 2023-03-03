@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:22 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:25:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int				sort_nsew(char **str, t_data *data);
 int				sort_fc(char **str, t_data *data);
 int				check_xpm(char **path);
 int				check_rgb(char **path);
+
+//get_map.c
+int				get_map(int fd, t_data *data);
 
 //check_args.c
 int				check_cub(int argc, char **argv);

@@ -9,7 +9,8 @@ SRC = test.c \
 		cub_utils.c \
 		get_clean_buf.c \
 		parsing_utils.c \
-		map_utils.c
+		map_utils.c \
+		get_map.c
 
 MLX_PATH = ./mlx
 
