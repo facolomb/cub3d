@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/01 01:39:36 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:25:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char			*ft_read_and_save(int fd, char *frigo);
 //parsing.c
 int				parsing(int argc, char **argv);
 int				parse(int fd, t_data *data);
-int				free_data(t_data *data);
 
 //videur.c
 int				videur(char **buf, t_data *data);
@@ -51,6 +50,9 @@ int				sort_nsew(char **str, t_data *data);
 int				sort_fc(char **str, t_data *data);
 int				check_xpm(char **path);
 int				check_rgb(char **path);
+
+//get_map.c
+int				get_map(int fd, t_data *data);
 
 //check_args.c
 int				check_cub(int argc, char **argv);
@@ -67,9 +69,14 @@ int				alrdy_set(char **str, t_data *data);
 
 //cub_utils.c
 void			freetab(char **tab);
+int				free_data(t_data *data);
 
 //get_clean_buf.c
-char			**get_clean_buf(int fd);
+char			**get_clean_buf(char *buf);
 char			*rm_lastbsn(char *str);
+
+//map_utils.c
+int				is_map(char *str);
+int				is_mapkey(char c);
 
 #endif

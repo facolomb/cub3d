@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:09 by mravera          ###   ########.fr       */
+/*   Created: 2023/03/03 16:30:27 by mravera           #+#    #+#             */
+/*   Updated: 2023/03/03 18:05:15 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-void	freetab(char **tab)
+int	is_map(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return ;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] == '1')
+		return (1);
+	else
+		return (0);
 }
 
-int	free_data(t_data *data)
+int	is_mapkey(char c)
 {
-	if (data->no != NULL)
-		free(data->no);
-	if (data->so != NULL)
-		free(data->so);
-	if (data->ea != NULL)
-		free(data->ea);
-	if (data->we != NULL)
-		free(data->we);
-	if (data->c != NULL)
-		free(data->c);
-	if (data->f != NULL)
-		free(data->f);
-	return (0);
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == '1' || c == '0' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

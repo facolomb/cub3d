@@ -6,28 +6,22 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:28:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 19:51:31 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:36:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-char	**get_clean_buf(int fd)
+char	**get_clean_buf(char *str)
 {
-	char	*treuse;
-	char	**res;
+	char	**treuse;
+	char	*l;
 
-	treuse = get_next_line(fd);
-	while (treuse[0] == '\n')
-	{
-		free(treuse);
-		treuse = get_next_line(fd);
-	}
-	treuse = rm_lastbsn(treuse);
-	res = ft_split(treuse, ' ');
-	free(treuse);
-	return (res);
+	l = rm_lastbsn(str);
+	treuse = ft_split(l, ' ');
+	free(l);
+	return (treuse);
 }
 
 char	*rm_lastbsn(char *str)
@@ -40,10 +34,11 @@ char	*rm_lastbsn(char *str)
 	i = ft_strlen(str);
 	if (i > 0 && str[i - 1] == '\n')
 	{
-		treuse = (char *)malloc(i * sizeof (char));
+		treuse = (char *)malloc(i * sizeof(char));
 		ft_strlcpy(treuse, str, i);
-		free(str);
 		return (treuse);
 	}
-	return (str);
+	else
+		treuse = ft_strdup(str);
+	return (treuse);
 }

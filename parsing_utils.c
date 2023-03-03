@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:57:40 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/01 02:15:09 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:31:13 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@ int	is_nsewkey(char *str)
 int	is_fckey(char *str)
 {
 	if (!ft_strncmp(str, "C", 2) || !ft_strncmp(str, "F", 2))
-		return (1);
-	return (0);
-}
-
-int	is_map(char *str)
-{
-	int	i;
-	int	n;
-
-	i = 0;
-	n = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i++] == '1')
-		n ++;
-	while (str[i] == ' ' || str[i] == '1')
-		i ++;
-	if (n == 0)
-		return (0);
-	if (str[i] == '\0')
 		return (1);
 	return (0);
 }
