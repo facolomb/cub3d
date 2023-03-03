@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 19:10:04 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:32:19 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int	parsing(int argc, char **argv)
 	fd = check_cub(argc, argv);
 	parse(fd, &data);
 	check_close(fd);
+	printf("no = %s\n", data.no);
+	printf("so = %s\n", data.so);
+	printf("ea = %s\n", data.ea);
+	printf("we = %s\n", data.we);
+	printf("c = %s\n", data.c);
+	printf("f = %s\n", data.f);
+	free_data(&data);
 	return (0);
 }
 
@@ -31,31 +38,24 @@ int	parse(int fd, t_data *data)
 	char	**treuse;
 	int		i;
 
-	i = 0;
 	buf = get_next_line(fd);
 	while (buf != NULL && !is_map(buf))
 	{
-		treuse = get_clean_buf(buf);
-		printf("[%s]\n", treuse[0]);
-		free(buf);
-		printf("%p AAAAAAAAAAA\n", treuse);
-		if (treuse)
+		i = 0;
+		while (buf[i] == ' ')
+			i++;
+		if (buf[i] && buf[i] != '\n')
+		{
+			treuse = get_clean_buf(buf);
+			videur(treuse, data);
 			freetab(treuse);
+		}
+		if (buf)
+			free(buf);
 		buf = get_next_line(fd);
-		//videur(buf, data);
-		//freetab(buf);
-		//buf = get_clean_buf(fd);
-		//i++;
 	}
 	if (buf)
 		free(buf);
-	printf("no = %s\n", data->no);
-	printf("so = %s\n", data->so);
-	printf("ea = %s\n", data->ea);
-	printf("we = %s\n", data->we);
-	printf("c = %s\n", data->c);
-	printf("f = %s\n", data->f);
-	free_data(data);
 	return (0);
 }
 

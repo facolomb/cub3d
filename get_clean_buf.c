@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:28:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 19:10:04 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:36:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	**get_clean_buf(char *str)
 
 	l = rm_lastbsn(str);
 	treuse = ft_split(l, ' ');
-	printf("%p BBBBBBBBB\n", treuse);
 	free(l);
 	return (treuse);
 }
@@ -35,10 +34,11 @@ char	*rm_lastbsn(char *str)
 	i = ft_strlen(str);
 	if (i > 0 && str[i - 1] == '\n')
 	{
-		treuse = (char *)malloc(i * sizeof (char));
+		treuse = (char *)malloc(i * sizeof(char));
 		ft_strlcpy(treuse, str, i);
-		str = 0;
 		return (treuse);
 	}
-	return (str);
+	else
+		treuse = ft_strdup(str);
+	return (treuse);
 }
