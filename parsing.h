@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 18:37:46 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:17:22 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char			*ft_read_and_save(int fd, char *frigo);
 //parsing.c
 int				parsing(int argc, char **argv);
 int				parse(int fd, t_data *data);
-int				free_data(t_data *data);
 
 //videur.c
 int				videur(char **buf, t_data *data);
@@ -67,6 +66,7 @@ int				alrdy_set(char **str, t_data *data);
 
 //cub_utils.c
 void			freetab(char **tab);
+int				free_data(t_data *data);
 
 //get_clean_buf.c
 char			**get_clean_buf(char *buf);

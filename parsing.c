@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 23:32:19 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:17:30 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,5 @@ int	parse(int fd, t_data *data)
 	}
 	if (buf)
 		free(buf);
-	return (0);
-}
-
-int	free_data(t_data *data)
-{
-	if (data->no != NULL)
-		free(data->no);
-	if (data->so != NULL)
-		free(data->so);
-	if (data->ea != NULL)
-		free(data->ea);
-	if (data->we != NULL)
-		free(data->we);
-	if (data->c != NULL)
-		free(data->c);
-	if (data->f != NULL)
-		free(data->f);
 	return (0);
 }
