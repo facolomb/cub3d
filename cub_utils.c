@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/23 00:03:40 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 19:02:27 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	freetab(char **tab)
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
+	printf("%p\n", tab);
 	return ;
 }

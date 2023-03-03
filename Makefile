@@ -8,7 +8,8 @@ SRC = test.c \
 		videur.c \
 		cub_utils.c \
 		get_clean_buf.c \
-		parsing_utils.c
+		parsing_utils.c \
+		map_utils.c
 
 MLX_PATH = ./mlx
 
@@ -18,7 +19,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

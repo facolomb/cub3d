@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_clean_buf.c                                    :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:28:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 19:10:04 by mravera          ###   ########.fr       */
+/*   Created: 2023/03/03 16:30:27 by mravera           #+#    #+#             */
+/*   Updated: 2023/03/03 18:05:15 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-char	**get_clean_buf(char *str)
+int	is_map(char *str)
 {
-	char	**treuse;
-	char	*l;
+	int	i;
 
-	l = rm_lastbsn(str);
-	treuse = ft_split(l, ' ');
-	printf("%p BBBBBBBBB\n", treuse);
-	free(l);
-	return (treuse);
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] == '1')
+		return (1);
+	else
+		return (0);
 }
 
-char	*rm_lastbsn(char *str)
+int	is_mapkey(char c)
 {
-	int		i;
-	char	*treuse;
-
-	if (str == NULL)
-		return (str);
-	i = ft_strlen(str);
-	if (i > 0 && str[i - 1] == '\n')
-	{
-		treuse = (char *)malloc(i * sizeof (char));
-		ft_strlcpy(treuse, str, i);
-		str = 0;
-		return (treuse);
-	}
-	return (str);
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == '1' || c == '0' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

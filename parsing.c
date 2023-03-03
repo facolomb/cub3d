@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/01 01:39:21 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 19:10:04 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,28 @@ int	parsing(int argc, char **argv)
 
 int	parse(int fd, t_data *data)
 {
-	char	**buf;
+	char	*buf;
+	char	**treuse;
 	int		i;
 
 	i = 0;
-	buf = get_clean_buf(fd);
-	while (buf[0] != NULL && !is_map(buf[0]))
+	buf = get_next_line(fd);
+	while (buf != NULL && !is_map(buf))
 	{
-		videur(buf, data);
-		freetab(buf);
-		buf = get_clean_buf(fd);
-		i++;
+		treuse = get_clean_buf(buf);
+		printf("[%s]\n", treuse[0]);
+		free(buf);
+		printf("%p AAAAAAAAAAA\n", treuse);
+		if (treuse)
+			freetab(treuse);
+		buf = get_next_line(fd);
+		//videur(buf, data);
+		//freetab(buf);
+		//buf = get_clean_buf(fd);
+		//i++;
 	}
-	freetab(buf);
+	if (buf)
+		free(buf);
 	printf("no = %s\n", data->no);
 	printf("so = %s\n", data->so);
 	printf("ea = %s\n", data->ea);

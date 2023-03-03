@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/01 01:39:36 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:37:46 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ int				alrdy_set(char **str, t_data *data);
 void			freetab(char **tab);
 
 //get_clean_buf.c
-char			**get_clean_buf(int fd);
+char			**get_clean_buf(char *buf);
 char			*rm_lastbsn(char *str);
+
+//map_utils.c
+int				is_map(char *str);
+int				is_mapkey(char c);
 
 #endif
