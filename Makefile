@@ -21,7 +21,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS = -g -Wall -Werror -Wextra -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

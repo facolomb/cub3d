@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 16:26:32 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:40:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,17 @@ int	parsing(int argc, char **argv)
 	parse(fd, &data);
 	check_close(fd);
 	printf("\nChecking the map.\n");
-	check_map(&data);
+	if (data.map != NULL)
+		check_map(&data);
+	else
+		printf("Error\nNo map detected.\n");
 	printf("no = %s\n", data.no);
 	printf("so = %s\n", data.so);
 	printf("ea = %s\n", data.ea);
 	printf("we = %s\n", data.we);
 	printf("c = %s\n", data.c);
 	printf("f = %s\n\n", data.f);
-	while (data.map[i])
+	while (data.map && data.map[i])
 		printf("%s\n", data.map[i ++]);
 	free_data(&data);
 	return (0);
