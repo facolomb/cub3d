@@ -1,22 +1,14 @@
-NO ./img/xpm.xpm
-S ./img/xpm2.xpm
-E ./img/xpm3.xpm
-Ef ./img/xpm3.xpm
-
-E ./img/xpm3.xpm
 
 
-slkdfj
-asdflkjlf
-
-asdflkjlf
-
-S ./img/xpm.xpm
-F 010,101,256
-r 000,111,255
-C 0,24,255
-
-o
 
 
-laskdjf
+     laskjdflkajsddflj
+NO ./img/xpm.xpm = oui
+
+S    ./img/xpm.xpm
+s ./oui.xpm
+No ./oui
+N ./img/xpm2.xpm
+     111
+10000   0000011111
+    1NN
