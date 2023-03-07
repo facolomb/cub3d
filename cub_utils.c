@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:09 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:33:51 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int	free_data(t_data *data)
 		free(data->c);
 	if (data->f != NULL)
 		free(data->f);
+	if (data->map != NULL)
+		freetab(data->map);
 	return (0);
 }

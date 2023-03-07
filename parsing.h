@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 14:26:04 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:30:27 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,11 @@ char			*rm_lastbsn(char *str);
 //map_utils.c
 int				is_map(char *str);
 int				is_mapkey(char c);
+
+//check_map.c
+int				check_map(t_data *data);
+int				check_strmap(char *str);
+int				print_maperr(void);
+int				print_nsew(int x);
 
 #endif
