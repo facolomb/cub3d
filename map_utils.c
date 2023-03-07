@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:30:27 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 17:09:48 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/08 00:15:12 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_map(char *str)
 	i = 0;
 	while (str[i] == ' ')
 		i++;
-	if (str[i] == '1')
+	if (str[i] == '1' || str[i] == '0')
 		return (1);
 	else
 		return (0);
