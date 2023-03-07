@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/04 00:38:14 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:26:04 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char			*ft_read_and_save(int fd, char *frigo);
 //parsing.c
 int				parsing(int argc, char **argv);
 int				parse(int fd, t_data *data);
+int				is_line(char *line);
+int				cub_printmap(char *str);
 
 //videur.c
 int				videur(char **buf, t_data *data);
@@ -53,6 +55,7 @@ int				check_rgb(char **path);
 
 //get_map.c
 int				get_map(char *buf, int fd, t_data *data);
+char			**add_line(char **old, char *newline);
 
 //check_args.c
 int				check_cub(int argc, char **argv);
