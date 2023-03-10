@@ -11,7 +11,8 @@ SRC = test.c \
 		parsing_utils.c \
 		map_utils.c \
 		get_map.c \
-		check_map.c
+		check_map.c \
+		is_map_closed.c
 
 MLX_PATH = ./mlx
 
@@ -21,7 +22,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -g -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

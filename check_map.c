@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:50:06 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 17:13:01 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/10 18:25:33 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	check_map(t_data *data)
 	}
 	if (x >= 0 && x != 1)
 		return (print_nsew(x));
+	square_map(data);
 	/*
 	if (is_map_closed(m))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 17:10:20 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/10 16:33:06 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,11 @@ int				print_nsew(int x);
 
 //check_map.c
 int				check_map(t_data *data);
+
+//is_map_closed.c
+int				is_map_closed(t_data *data);
+int				square_map(t_data *data);
+int				ft_tabmaxlen(char **tab);
+char			*stradd(char *old, int size, char x);
 
 #endif

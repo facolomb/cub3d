@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:30:27 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/08 00:15:12 by mravera          ###   ########.fr       */
+/*   Updated: 2023/03/09 18:26:38 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	check_strmap(char *str)
 	{
 		if (!is_mapkey(str[i]))
 			return (-1);
-		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
+		if (str[i] == 'N' || str[i] == 'S'
+			|| str[i] == 'E' || str[i] == 'W')
 			x ++;
 		i ++;
 	}
