@@ -1,6 +1,6 @@
 
 #include "test.h"
-
+/*
 int	tablen(char **tab)
 {
 	int	count;
@@ -20,14 +20,18 @@ void	DDA(int x0, int y0, int x1, int y1, t_mlx *mlx)
 
 	r.dx = x1 - x0;
 	r.dy = y1 - y0;
-	r.steps = abs(r.dx) > abs (r.dy) ? abs(r.dx) : abs(r.dy);
-	r.xinc = r.dx / (float)r.steps;
-	r.yinc = r.dy / (float)r.steps;
+	if (abs(r.dx) > abs(r.dy))
+		r.steps = abs(r.dx);
+	else
+		r.steps = abs(r.dy);
+	r.xinc = r.dx / (float) r.steps;
+	r.yinc = r.dy / (float) r.steps;
 	r.x = x0;
 	r.y = y0;
 	while (i <= r.steps)
 	{
-		mlx->img.data[(int)round(r.x) * WIN_WIDTH + (int)round(r.y)] = 0x19BF37;
+		mlx->img.data[(int) round(r.x) * WIN_WIDTH +
+		(int) round(r.y)] = 0x19BF37;
 		r.x += r.xinc;
 		r.y += r.yinc;
 		i++;
@@ -105,7 +109,7 @@ void	init_minimap(t_mlx *mlx, char **map)
 		}
 	}
 }
-
+*/
 void	init_window(t_mlx *mlx)
 {
 	int		count_w;
@@ -130,26 +134,167 @@ void	init_window(t_mlx *mlx)
 	}
 }
 
-int	main(void)
-{
-	t_mlx	mlx;
-	char	**map;
+//int	main(void)
+//{
+//	t_mlx	mlx;
+//
+//	mlx.map = ft_calloc(sizeof (char *), 5);
+//	mlx.map[0] = ft_strdup("11111");
+//	mlx.map[1] = ft_strdup("10101");
+//	mlx.map[2] = ft_strdup("10201");
+//	mlx.map[3] = ft_strdup("11111");
+//
+//	init_window(&mlx);
+//	init_minimap(&mlx, mlx.map);
+//	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
+//	mlx_loop(mlx.mlx_ptr);
+//
+//	free(mlx.map[0]);
+//	free(mlx.map[1]);
+//	free(mlx.map[2]);
+//	free(mlx.map[3]);
+//	free(mlx.map);
+//	return (0);
+//}
 
-	map = ft_calloc(sizeof (char *), 5);
-	map[0] = ft_strdup("11111");
-	map[1] = ft_strdup("10101");
-	map[2] = ft_strdup("10201");
-	map[3] = ft_strdup("11111");
+void	display_map(t_mlx *mlx)
+{
+	int x = 0;
+	while (mlx->map[x])
+	{
+		printf("%s\n", mlx->map[x]);
+		x++;
+	}
+}
+
+void	drawLine(int x, int start, int end, int color, t_mlx *mlx)
+{
+	while(start < end)
+	{
+		mlx->img.data[start * WIN_WIDTH + x] = color;
+		start++;
+	}
+}
+
+void	raycasting(t_mlx *mlx)
+{
+	double posX = 3.5;
+	double posY = 2.5;
+	double dirX = -1;
+	double dirY = 0;
+	double planX = 0;
+	double planY = 0.66;
+	double cameraX;
+	double rayDirX;
+	double rayDirY;
+	int mapX;
+	int mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int	stepX;
+	int stepY;
+	int hit;
+	int side;
+	int lineHeight;
+	int drawStart;
+	int drawEnd;
+	int x;
+
+	x = 0;
+	while(x < WIN_WIDTH)
+	{
+		cameraX = 2 * x / (double) WIN_WIDTH - 1;
+		rayDirX = dirX + planX * cameraX;
+		rayDirY = dirY + planY * cameraX;
+		mapX = (int)posX;
+		mapY = (int)posY;
+		deltaDistX = sqrt(1 + (dirY * dirY) / (dirX * dirX));
+		deltaDistY = sqrt(1 + (dirX * dirX) / (dirY * dirY));
+		if (rayDirX < 0)
+		{
+			stepX = -1;
+			sideDistX = (posX - mapX) * deltaDistX;
+		}
+		else
+		{
+			stepX = 1;
+			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+		}
+		if (rayDirY < 0)
+		{
+			stepY = -1;
+			sideDistY = (posY - mapY) * deltaDistY;
+		}
+		else
+		{
+			stepY = 1;
+			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+		}
+		hit = 0;
+		while (hit == 0)
+		{
+			if (sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				side = 1;
+			}
+			if (mlx->map[mapX][mapY] != '0')
+				hit = 1;
+		}
+		printf("hit at : %d / %d\n", mapX, mapY);
+		if (side == 0)
+			perpWallDist = (sideDistX - deltaDistX);
+		else
+			perpWallDist = (sideDistY - deltaDistY);
+		lineHeight = abs((int)(WALL_HEIGHT / perpWallDist));
+		drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
+		if (drawStart < 0)
+			drawStart = 0;
+		drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
+		if (drawEnd >= WIN_HEIGHT)
+			drawEnd = WIN_HEIGHT - 1;
+		drawLine(x, drawStart, drawEnd, 0xBF610E, mlx);
+		x++;
+	}
+}
+
+void	freemap(t_mlx *mlx)
+{
+	int x = 0;
+	while (mlx->map[x])
+	{
+		free(mlx->map[x]);
+		x++;
+	}
+	free(mlx->map);
+}
+
+int main(void)
+{
+	t_mlx mlx;
+
+	mlx.map = ft_calloc(sizeof (char *), 6);
+	mlx.map[0] = ft_strdup("1111111");
+	mlx.map[1] = ft_strdup("1000101");
+	mlx.map[2] = ft_strdup("1100011");
+	mlx.map[3] = ft_strdup("1010001");
+	mlx.map[4] = ft_strdup("1111111");
 
 	init_window(&mlx);
-	init_minimap(&mlx, map);
+	raycasting(&mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
 	mlx_loop(mlx.mlx_ptr);
 
-	free(map[0]);
-	free(map[1]);
-	free(map[2]);
-	free(map[3]);
-	free(map);
+	freemap(&mlx);
 	return (0);
 }
