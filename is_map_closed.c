@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:04:31 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/10 18:24:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/02 15:47:11 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 int	is_map_closed(t_data *data)
 {
 	char	**m;
-	int		i;
 
 	m = data->map;
-	i = 0;
+	cb_check_path(data);
 	return (1);
-	return (0);
 }
 
 int	square_map(t_data *data)

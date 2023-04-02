@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 16:33:51 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/02 15:33:12 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	freetab(char **tab)
 {
 	size_t	i;
 
+	if (!tab)
+		return ;
 	i = 0;
 	while (tab[i])
 		free(tab[i++]);
@@ -41,4 +43,14 @@ int	free_data(t_data *data)
 	if (data->map != NULL)
 		freetab(data->map);
 	return (0);
+}
+
+void	printab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		printf("%s\n", tab[i++]);
+	return ;
 }

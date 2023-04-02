@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/10 16:33:06 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/02 15:33:26 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_data
 	char	*ea;
 	char	*f;
 	char	*c;
+	int		player_x;
+	int		player_y;
+	int		check_map;
 	char	**map;
 }	t_data;
 
@@ -73,6 +76,7 @@ int				alrdy_set(char **str, t_data *data);
 //cub_utils.c
 void			freetab(char **tab);
 int				free_data(t_data *data);
+void			printab(char **tab);
 
 //get_clean_buf.c
 char			**get_clean_buf(char *buf);
@@ -93,5 +97,11 @@ int				is_map_closed(t_data *data);
 int				square_map(t_data *data);
 int				ft_tabmaxlen(char **tab);
 char			*stradd(char *old, int size, char x);
+
+//
+int				cb_check_path(t_data *data);
+char			**cb_dup_map(t_data *data);
+int				cb_player_pos(t_data *data);
+int				cb_flood(char **grid, int i, int j, t_data *data);
 
 #endif

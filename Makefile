@@ -12,7 +12,8 @@ SRC = test.c \
 		map_utils.c \
 		get_map.c \
 		check_map.c \
-		is_map_closed.c
+		is_map_closed.c \
+		cub_flood.c \
 
 MLX_PATH = ./mlx
 

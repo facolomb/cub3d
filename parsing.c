@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/07 16:44:22 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/02 16:12:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	parsing(int argc, char **argv)
 		check_map(&data);
 	else
 		printf("Error\nNo map detected.\n");
+	printf("\n\n--------------DATAS--------------\n");
 	printf("no = %s\n", data.no);
 	printf("so = %s\n", data.so);
 	printf("ea = %s\n", data.ea);
