@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/04 21:00:41 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/05 14:58:31 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	char	**map;
 }	t_data;
 
+//gnl
 size_t			gnl_strlen(char *str);
 char			*gnl_strchr(char *s, int x);
 char			*gnl_strjoin(char *s1, char *s2);
@@ -99,7 +100,7 @@ int				square_map(t_data *data);
 int				ft_tabmaxlen(char **tab);
 char			*stradd(char *old, int size, char x);
 
-//
+//cub_flood.c
 int				cb_check_path(t_data *data);
 char			**cb_dup_map(t_data *data);
 int				cb_player_pos(t_data *data);
