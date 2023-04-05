@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/02/15 15:58:37 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/02 16:12:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,79 @@
 
 int	parsing(int argc, char **argv)
 {
-	check_file(argc, argv);
-	return (0);
-}
-
-int	check_file(int argc, char **argv)
-{
+	t_data	data;
+	int		fd;
 	int		i;
 
 	i = 0;
-	argv++;
-	while (*argv)
-	{
-		if (is_cub(*argv))
-			i++;
-		argv++;
-	}
-	if (i == 1 && argc == 2)
-		printf(".cub found\n");
-	if (i >= 1 && argc > 2)
-		printf("using first valid .cub argument...\n");
-	if (i <= 0)
-		printf("no valid .cub found, aborting...\n");
+	data = (t_data){0};
+	fd = check_cub(argc, argv);
+	parse(fd, &data);
+	check_close(fd);
+	printf("\nChecking the map.\n");
+	if (data.map != NULL)
+		check_map(&data);
+	else
+		printf("Error\nNo map detected.\n");
+	printf("\n\n--------------DATAS--------------\n");
+	printf("no = %s\n", data.no);
+	printf("so = %s\n", data.so);
+	printf("ea = %s\n", data.ea);
+	printf("we = %s\n", data.we);
+	printf("c = %s\n", data.c);
+	printf("f = %s\n\n", data.f);
+	while (data.map && data.map[i])
+		printf("%s\n", data.map[i ++]);
+	free_data(&data);
 	return (0);
 }
 
-int	is_cub(char *str)
+int	parse(int fd, t_data *data)
+{
+	char	*buf;
+	char	**treuse;
+
+	buf = get_next_line(fd);
+	while (buf != NULL && !is_map(buf))
+	{
+		if (is_line(buf))
+		{
+			treuse = get_clean_buf(buf);
+			videur(treuse, data);
+			freetab(treuse);
+		}
+		free(buf);
+		buf = get_next_line(fd);
+	}
+	while (buf != NULL && is_map(buf))
+	{
+		get_map(buf, fd, data);
+		free(buf);
+		buf = get_next_line(fd);
+	}
+	if (buf != NULL && !is_map(buf))
+		cub_printmap(buf);
+	return (0);
+}
+
+int	is_line(char *line)
 {
 	int	i;
 
-	i = ft_strlen(str);
-	if (i < 5)
+	i = 0;
+	if (!line)
 		return (0);
-	if (str[i - 1] == 'b' && str[i - 2] == 'u'
-		&& str[i - 3] == 'c' && str[i - 4] == '.')
+	while (line[i] == ' ')
+		i ++;
+	if (line[i] && line[i] != '\n')
 		return (1);
 	else
 		return (0);
+}
+
+int	cub_printmap(char *str)
+{
+	printf("Error\nMap not at the end of file.\n");
+	free(str);
+	return (0);
 }

@@ -1,6 +1,19 @@
 NAME = test
 
-SRC = test.c
+SRC = test.c \
+		parsing.c \
+		cub_gnl.c \
+		cub_gnl_utils.c \
+		check_args.c \
+		videur.c \
+		cub_utils.c \
+		get_clean_buf.c \
+		parsing_utils.c \
+		map_utils.c \
+		get_map.c \
+		check_map.c \
+		is_map_closed.c \
+		cub_flood.c \
 
 MLX_PATH = ./mlx
 
@@ -10,7 +23,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 
