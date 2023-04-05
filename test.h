@@ -80,4 +80,6 @@ int		p_ydown(t_player *p);
 
 double wallDistance(t_player *player, int x, int y);
 
+int key_hook(int keycode, t_player *p);
+
 #endif
