@@ -65,4 +65,6 @@ typedef struct s_player
 	float	dir;
 }	t_player;
 
+double wallDistance(t_player *player, int x, int y);
+
 #endif
