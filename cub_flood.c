@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:46:20 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/02 16:08:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/05 19:59:59 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	cb_player_pos(t_data *data)
 			{
 				data->player_x = x;
 				data->player_y = y;
+				data->map[y][x] = '0';
 				return (0);
 			}
 			x++;

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:21:51 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 15:00:53 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/05 16:48:50 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TEST_H
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+# include "parsing.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
@@ -78,6 +79,8 @@ int		p_yup(t_player *p);
 int		p_xdown(t_player *p);
 int		p_ydown(t_player *p);
 
-double wallDistance(t_player *player, int x, int y);
+//t_raymain.c
+int		t_whatis(float x, float y, t_data *data);
+double	wallDistance(t_player *player, int x, int y);
 
 #endif
