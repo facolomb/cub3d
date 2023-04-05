@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:21:51 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 11:47:28 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/05 15:00:53 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define WIN_WIDTH 600
 # define WIN_HEIGHT 600
 # define WALL_HEIGHT 64
+# define DIR_STEP 1
+# define X_STEP 0.1
+# define Y_STEP 0.1
 
 typedef struct s_img
 {
@@ -60,10 +63,20 @@ typedef struct s_draw_line
 
 typedef struct s_player
 {
-	float	pos_x;
-	float	pos_y;
-	float	dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir;
 }	t_player;
+
+//player_dir.c
+int		p_dirup(t_player *p);
+int		p_dirdown(t_player *p);
+
+//player_move.c
+int		p_xup(t_player *p);
+int		p_yup(t_player *p);
+int		p_xdown(t_player *p);
+int		p_ydown(t_player *p);
 
 double wallDistance(t_player *player, int x, int y);
 
