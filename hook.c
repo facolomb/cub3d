@@ -16,7 +16,7 @@ int key_hook(int keycode, t_player *p)
 	else if (keycode == 124)
 		p_dirdown(p);
 	else
-		return (0);
+		return (1);
 	//TO DO : refresh affichage
 	return (0);
 }

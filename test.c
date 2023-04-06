@@ -35,7 +35,7 @@ int main(void)
 	p.dir = 358;
 	init_window(&mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
-	mlx_key_hook(mlx.win, key_hook, &p);
+	mlx_hook(mlx.win, 2, 0, key_hook, &p);
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
