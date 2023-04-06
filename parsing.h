@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:03 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/06 01:45:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_data
 	int		player_y;
 	int		check_map;
 	char	**map;
+	int		mapmx;
+	int		mapmy;
 }	t_data;
 
 //gnl
@@ -97,7 +99,7 @@ int				check_map(t_data *data);
 //is_map_closed.c
 int				is_map_closed(t_data *data);
 int				square_map(t_data *data);
-int				ft_tabmaxlen(char **tab);
+int				ft_tabmaxlen(char **tab, t_data *data);
 char			*stradd(char *old, int size, char x);
 
 //cub_flood.c
