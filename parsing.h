@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/06 01:45:02 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/07 01:36:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,31 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include "test.h"
+
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir;
+}	t_player;
 
 typedef struct s_data
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	int		player_x;
-	int		player_y;
-	int		check_map;
-	char	**map;
-	int		mapmx;
-	int		mapmy;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	t_player	p;
+	double		player_x;
+	double		player_y;
+	double		p_dir;
+	int			check_map;
+	char		**map;
+	int			mapmx;
+	int			mapmy;
 }	t_data;
 
 //gnl
@@ -106,6 +116,21 @@ char			*stradd(char *old, int size, char x);
 int				cb_check_path(t_data *data);
 char			**cb_dup_map(t_data *data);
 int				cb_player_pos(t_data *data);
+int				cb_set_player_pos(int x, int y, char dir, t_data *data);
 int				cb_flood(char **grid, int i, int j, t_data *data);
+
+//player_dir.c
+int				p_dirup(t_player *p);
+int				p_dirdown(t_player *p);
+
+//player_move.c
+int				p_xup(t_player *p);
+int				p_yup(t_player *p);
+int				p_xdown(t_player *p);
+int				p_ydown(t_player *p);
+
+//t_raymain.c
+int				t_whatis(double x, double y, t_data *data);
+double			wallDistance(t_player *player, int x, int y);
 
 #endif

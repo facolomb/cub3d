@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:46:57 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/06 02:29:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/07 01:34:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 #include "parsing.h"
 
 /*
-float	t_getdist(float dir, float x, float y, t_data *data)
+double	t_get_dist(double dir, t_data *data)
 {
-	float	res;
+	double	res;
 
-	return (res);
+	if ((dir >= 0) && (dir < 90))
+		return (get_dist_ne(dir, data));
+	else if ((dir >= 90) && (dir < 180))
+		return (get_dist_nw(dir, data));
+	else if ((dir >= 180) && (dir < 270))
+		return (get_dist_sw(dir, data));
+	else if ((dir >= 270) && (dir < 360))
+		return (get_dist_se(dir, data));
+	return (-1);
 }
 */
 
-int	t_whatis(float x, float y, t_data *data)
+int	t_whatis(double x, double y, t_data *data)
 {
 	if ((x >= data->mapmx) || (y >= data->mapmy)
 		|| x <= 0 || y <= 0)

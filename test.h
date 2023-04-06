@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:21:51 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 16:48:50 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:41:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,5 @@ typedef struct s_draw_line
 	float	x;
 	float	y;
 }	t_draw_line;
-
-typedef struct s_player
-{
-	double	pos_x;
-	double	pos_y;
-	double	dir;
-}	t_player;
-
-//player_dir.c
-int		p_dirup(t_player *p);
-int		p_dirdown(t_player *p);
-
-//player_move.c
-int		p_xup(t_player *p);
-int		p_yup(t_player *p);
-int		p_xdown(t_player *p);
-int		p_ydown(t_player *p);
-
-//t_raymain.c
-int		t_whatis(float x, float y, t_data *data);
-double	wallDistance(t_player *player, int x, int y);
 
 #endif

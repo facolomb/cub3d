@@ -1,18 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
+/*   Updated: 2023/04/06 22:37:01 by mravera          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "test.h"
-
-/*
 #include "parsing.h"
 
 int	main(int argc, char **argv)
 {
+	t_data		data;
+	int			i;
+
+	i = 0;
+	data = (t_data){0};
 	if (argc > 1)
-		parsing(argc, argv);
+		parsing(argc, argv, &data);
 	else
 		printf("Error\nNeed a .cub configuration file as argument\n");
+	printf("\n\n--------------DATAS--------------\n");
+	printf("no = %s\n", data.no);
+	printf("so = %s\n", data.so);
+	printf("ea = %s\n", data.ea);
+	printf("we = %s\n", data.we);
+	printf("c = %s\n", data.c);
+	printf("f = %s\n\n", data.f);
+	printf("player x = %lf\n       y = %lf\n", data.player_x, data.player_y);
+	printf("     dir = %lf\n", data.p_dir);
+	while (data.map && data.map[i])
+		printf("%s\n", data.map[i ++]);
+	free_data(&data);
 	return (0);
 }
-*/
 
 /*
 int	tablen(char **tab)
@@ -123,7 +148,7 @@ void	init_minimap(t_mlx *mlx, char **map)
 		}
 	}
 }
-*/
+
 void	init_window(t_mlx *mlx)
 {
 	int		count_w;
@@ -147,7 +172,7 @@ void	init_window(t_mlx *mlx)
 		}
 	}
 }
-*/
+
 
 //int	main(void)
 //{
@@ -313,3 +338,98 @@ int main(void)
 	freemap(&mlx);
 	return (0);
 }
+*/
+
+/*
+	printf("0, 0 = %d\n", t_whatis(0, 0, &data));
+	printf("1, 0 = %d\n", t_whatis(1, 0, &data));
+	printf("1, 1 = %d\n", t_whatis(1, 1, &data));
+	printf("1, 2 = %d\n", t_whatis(1, 2, &data));
+	printf("1, 3 = %d\n", t_whatis(1, 3, &data));
+	printf("1, 4 = %d\n", t_whatis(1, 4, &data));
+	printf("1, 5 = %d\n", t_whatis(1, 5, &data));
+	printf("1, 6 = %d\n", t_whatis(1, 6, &data));
+	printf("1, 7 = %d\n", t_whatis(1, 7, &data));
+	printf("1, 8 = %d\n", t_whatis(1, 8, &data));
+	printf("1, 9 = %d\n", t_whatis(1, 9, &data));
+	printf("2, 0 = %d\n", t_whatis(2, 0, &data));
+	printf("2, 1 = %d\n", t_whatis(2, 1, &data));
+	printf("2, 2 = %d\n", t_whatis(2, 2, &data));
+	printf("2, 3 = %d\n", t_whatis(2, 3, &data));
+	printf("2, 4 = %d\n", t_whatis(2, 4, &data));
+	printf("2, 5 = %d\n", t_whatis(2, 5, &data));
+	printf("2, 6 = %d\n", t_whatis(2, 6, &data));
+	printf("2, 7 = %d\n", t_whatis(2, 7, &data));
+	printf("2, 8 = %d\n", t_whatis(2, 8, &data));
+	printf("2, 9 = %d\n", t_whatis(2, 9, &data));
+	printf("3, 0 = %d\n", t_whatis(3, 0, &data));
+	printf("3, 1 = %d\n", t_whatis(3, 1, &data));
+	printf("3, 2 = %d\n", t_whatis(3, 2, &data));
+	printf("3, 3 = %d\n", t_whatis(3, 3, &data));
+	printf("3, 4 = %d\n", t_whatis(3, 4, &data));
+	printf("3, 5 = %d\n", t_whatis(3, 5, &data));
+	printf("3, 6 = %d\n", t_whatis(3, 6, &data));
+	printf("3, 7 = %d\n", t_whatis(3, 7, &data));
+	printf("3, 8 = %d\n", t_whatis(3, 8, &data));
+	printf("3, 9 = %d\n", t_whatis(3, 9, &data));
+	printf("4, 0 = %d\n", t_whatis(4, 0, &data));
+	printf("4, 1 = %d\n", t_whatis(4, 1, &data));
+	printf("4, 2 = %d\n", t_whatis(4, 2, &data));
+	printf("4, 3 = %d\n", t_whatis(4, 3, &data));
+	printf("4, 4 = %d\n", t_whatis(4, 4, &data));
+	printf("4, 5 = %d\n", t_whatis(4, 5, &data));
+	printf("4, 6 = %d\n", t_whatis(4, 6, &data));
+	printf("4, 7 = %d\n", t_whatis(4, 7, &data));
+	printf("4, 8 = %d\n", t_whatis(4, 8, &data));
+	printf("4, 9 = %d\n", t_whatis(4, 9, &data));
+	printf("5, 0 = %d\n", t_whatis(5, 0, &data));
+	printf("5, 1 = %d\n", t_whatis(5, 1, &data));
+	printf("5, 2 = %d\n", t_whatis(5, 2, &data));
+	printf("5, 3 = %d\n", t_whatis(5, 3, &data));
+	printf("5, 4 = %d\n", t_whatis(5, 4, &data));
+	printf("5, 5 = %d\n", t_whatis(5, 5, &data));
+	printf("5, 6 = %d\n", t_whatis(5, 6, &data));
+	printf("5, 7 = %d\n", t_whatis(5, 7, &data));
+	printf("5, 8 = %d\n", t_whatis(5, 8, &data));
+	printf("5, 9 = %d\n", t_whatis(5, 9, &data));
+	printf("6, 0 = %d\n", t_whatis(6, 0, &data));
+	printf("6, 1 = %d\n", t_whatis(6, 1, &data));
+	printf("6, 2 = %d\n", t_whatis(6, 2, &data));
+	printf("6, 3 = %d\n", t_whatis(6, 3, &data));
+	printf("6, 4 = %d\n", t_whatis(6, 4, &data));
+	printf("6, 5 = %d\n", t_whatis(6, 5, &data));
+	printf("6, 6 = %d\n", t_whatis(6, 6, &data));
+	printf("6, 7 = %d\n", t_whatis(6, 7, &data));
+	printf("6, 8 = %d\n", t_whatis(6, 8, &data));
+	printf("6, 9 = %d\n", t_whatis(6, 9, &data));
+	printf("7, 0 = %d\n", t_whatis(7, 0, &data));
+	printf("7, 1 = %d\n", t_whatis(7, 1, &data));
+	printf("7, 2 = %d\n", t_whatis(7, 2, &data));
+	printf("7, 3 = %d\n", t_whatis(7, 3, &data));
+	printf("7, 4 = %d\n", t_whatis(7, 4, &data));
+	printf("7, 5 = %d\n", t_whatis(7, 5, &data));
+	printf("7, 6 = %d\n", t_whatis(7, 6, &data));
+	printf("7, 7 = %d\n", t_whatis(7, 7, &data));
+	printf("7, 8 = %d\n", t_whatis(7, 8, &data));
+	printf("7, 9 = %d\n", t_whatis(7, 9, &data));
+	printf("8, 0 = %d\n", t_whatis(8, 0, &data));
+	printf("8, 1 = %d\n", t_whatis(8, 1, &data));
+	printf("8, 2 = %d\n", t_whatis(8, 2, &data));
+	printf("8, 3 = %d\n", t_whatis(8, 3, &data));
+	printf("8, 4 = %d\n", t_whatis(8, 4, &data));
+	printf("8, 5 = %d\n", t_whatis(8, 5, &data));
+	printf("8, 6 = %d\n", t_whatis(8, 6, &data));
+	printf("8, 7 = %d\n", t_whatis(8, 7, &data));
+	printf("8, 8 = %d\n", t_whatis(8, 8, &data));
+	printf("8, 9 = %d\n", t_whatis(8, 9, &data));
+	printf("9, 0 = %d\n", t_whatis(9, 0, &data));
+	printf("9, 1 = %d\n", t_whatis(9, 1, &data));
+	printf("9, 2 = %d\n", t_whatis(9, 2, &data));
+	printf("9, 3 = %d\n", t_whatis(9, 3, &data));
+	printf("9, 4 = %d\n", t_whatis(9, 4, &data));
+	printf("9, 5 = %d\n", t_whatis(9, 5, &data));
+	printf("9, 6 = %d\n", t_whatis(9, 6, &data));
+	printf("9, 7 = %d\n", t_whatis(9, 7, &data));
+	printf("9, 8 = %d\n", t_whatis(9, 8, &data));
+	printf("9, 9 = %d\n", t_whatis(9, 9, &data));
+*/

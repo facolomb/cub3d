@@ -14,6 +14,9 @@ SRC = test.c \
 		check_map.c \
 		is_map_closed.c \
 		cub_flood.c \
+		player_move.c \
+		player_dir.c \
+		t_raymain.c \
 
 MLX_PATH = ./mlx
 
