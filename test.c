@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/06 22:37:01 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/07 16:21:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	main(int argc, char **argv)
 	printf("c = %s\n", data.c);
 	printf("f = %s\n\n", data.f);
 	printf("player x = %lf\n       y = %lf\n", data.player_x, data.player_y);
+	data.p_dir = 45;
 	printf("     dir = %lf\n", data.p_dir);
+	get_dist_ne(data.p_dir, &data);
 	while (data.map && data.map[i])
 		printf("%s\n", data.map[i ++]);
 	free_data(&data);

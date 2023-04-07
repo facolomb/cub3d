@@ -17,6 +17,8 @@ SRC = test.c \
 		player_move.c \
 		player_dir.c \
 		t_raymain.c \
+		wall_distance.c \
+		get_nsew_dist.c \
 
 MLX_PATH = ./mlx
 
