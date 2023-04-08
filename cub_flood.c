@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:46:20 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/07 01:32:30 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/08 17:13:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,6 @@ int	cb_flood(char **grid, int i, int j, t_data *data)
 	if (data->check_map || (grid[j][i] == '1') || (grid[j][i] == 'X'))
 		return (1);
 	grid[j][i] = 'X';
-	while (grid[y])
-		printf("%s\n", grid[y++]);
-	printf("\n____________________________________________\n\n");
 	cb_flood(grid, i, j + 1, data);
 	cb_flood(grid, i, j - 1, data);
 	cb_flood(grid, i + 1, j, data);

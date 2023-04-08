@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/07 15:58:22 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/08 17:31:05 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ double			walldistance(t_data *data, double x, double y);
 
 //get_nsew_dist.c
 double			get_dist_ne(double dir, t_data *data);
+double			get_dist_nw(double dir, t_data *data);
 
 #endif
