@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/08 17:31:05 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/10 17:38:18 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,16 @@ int				p_xdown(t_player *p);
 int				p_ydown(t_player *p);
 
 //t_raymain.c
+double			t_get_dist(double dir, t_data *data);
 int				t_whatis(double x, double y, t_data *data);
+
+//wall_distance.c
 double			walldistance(t_data *data, double x, double y);
 
 //get_nsew_dist.c
 double			get_dist_ne(double dir, t_data *data);
 double			get_dist_nw(double dir, t_data *data);
+double			get_dist_sw(double dir, t_data *data);
+double			get_dist_se(double dir, t_data *data);
 
 #endif

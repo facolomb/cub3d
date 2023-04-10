@@ -6,18 +6,15 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:46:57 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/07 01:34:20 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/10 17:38:34 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-/*
 double	t_get_dist(double dir, t_data *data)
 {
-	double	res;
-
 	if ((dir >= 0) && (dir < 90))
 		return (get_dist_ne(dir, data));
 	else if ((dir >= 90) && (dir < 180))
@@ -26,9 +23,10 @@ double	t_get_dist(double dir, t_data *data)
 		return (get_dist_sw(dir, data));
 	else if ((dir >= 270) && (dir < 360))
 		return (get_dist_se(dir, data));
+	else
+		printf("Error\nWrong dir value.\n");
 	return (-1);
 }
-*/
 
 int	t_whatis(double x, double y, t_data *data)
 {
