@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:08:16 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/10 18:51:28 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:47:32 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ double	get_dist_ne(double dir, t_data *data)
 	a[0] = ceil(a[0]);
 	b[0] = ((b[1] - floor(b[1])) / tan(theta)) + b[0];
 	b[1] = floor(b[1]);
+	printf("_______________\n");
+	printf("dir = %lf\n", dir);
 	printf("t_whatis a = %d\n", t_whatis(a[0], a[1], data));
 	printf("t_whatis b = %d\n", t_whatis(b[0], b[1], data));
 	printf("ray a goes to %lf\n            %lf\n", a[0], a[1]);
@@ -76,6 +78,8 @@ double	get_dist_nw(double dir, t_data *data)
 	a[0] = floor(a[0]);
 	b[0] = -((b[1] - floor(b[1])) / tan(2 * M_PI - theta)) + b[0];
 	b[1] = floor(b[1]);
+	printf("_______________\n");
+	printf("dir = %lf\n", dir);
 	printf("t_whatis a = %d\n", t_whatis(a[0], a[1], data));
 	printf("t_whatis b = %d\n", t_whatis(b[0], b[1], data));
 	printf("ray a goes to %lf\n            %lf\n", a[0], a[1]);
@@ -114,6 +118,8 @@ double	get_dist_sw(double dir, t_data *data)
 	a[0] = floor(a[0]);
 	b[0] = -((ceil(b[1]) - b[1]) / tan(2 * M_PI + theta)) + b[0];
 	b[1] = ceil(b[1]);
+	printf("_______________\n");
+	printf("dir = %lf\n", dir);
 	printf("t_whatis a = %d\n", t_whatis(a[0], a[1], data));
 	printf("t_whatis b = %d\n", t_whatis(b[0], b[1], data));
 	printf("ray a goes to %lf\n            %lf\n", a[0], a[1]);
@@ -152,6 +158,8 @@ double	get_dist_se(double dir, t_data *data)
 	a[0] = ceil(a[0]);
 	b[0] = ((ceil(b[1]) - b[1]) / tan(0 - theta)) + b[0];
 	b[1] = ceil(b[1]);
+	printf("_______________\n");
+	printf("dir = %lf\n", dir);
 	printf("t_whatis a = %d\n", t_whatis(a[0], a[1], data));
 	printf("t_whatis b = %d\n", t_whatis(b[0], b[1], data));
 	printf("ray a goes to %lf\n            %lf\n", a[0], a[1]);

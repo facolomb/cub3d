@@ -19,6 +19,8 @@ SRC = test.c \
 		t_raymain.c \
 		wall_distance.c \
 		get_nsew_dist.c \
+		mlx_draw.c \
+		mlx_hooks.c \
 
 MLX_PATH = ./mlx
 

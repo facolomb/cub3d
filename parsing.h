@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/10 17:38:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:12:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,41 @@
 # include <unistd.h>
 # include <math.h>
 # include "test.h"
+# include "mlx/mlx.h"
+# include "libft/libft.h"
+
+//game
+# define WIN_WIDTH 600
+# define WIN_HEIGHT 600
+# define DIR_STEP 1
+# define X_STEP 0.1
+# define Y_STEP 0.1
+
+//keycode for MAC
+# define ESC 53
+# define ARROWUP 126
+# define ARROWDOWN 125
+# define ARROWLEFT 123
+# define ARROWRIGHT 124
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+
+typedef struct s_imgdata
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		l_length;
+	int		endian;
+}	t_imgdata;
+
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*win;
+}	t_vars;
 
 typedef struct s_player
 {
@@ -32,6 +67,8 @@ typedef struct s_player
 
 typedef struct s_data
 {
+	void		*mlx;
+	void		*win;
 	char		*no;
 	char		*so;
 	char		*we;
@@ -141,5 +178,11 @@ double			get_dist_ne(double dir, t_data *data);
 double			get_dist_nw(double dir, t_data *data);
 double			get_dist_sw(double dir, t_data *data);
 double			get_dist_se(double dir, t_data *data);
+
+//mlx_draw.c
+void			my_pixel_put(t_imgdata *data, int x, int y, int color);
+
+//mlx_hooks.c
+int				cb_close(int keycode, t_data *data);
 
 #endif
