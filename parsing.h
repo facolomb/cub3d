@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 00:12:07 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 20:56:23 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 //game
 # define WIN_WIDTH 600
 # define WIN_HEIGHT 600
+# define WALL_RATIO 0.5
+# define FOV 60
+# define SCREEN_DIST 1
 # define DIR_STEP 1
 # define X_STEP 0.1
 # define Y_STEP 0.1
@@ -78,7 +81,7 @@ typedef struct s_data
 	t_player	p;
 	double		player_x;
 	double		player_y;
-	double		p_dir;
+	int			p_dir;
 	int			check_map;
 	char		**map;
 	int			mapmx;
@@ -178,11 +181,23 @@ double			get_dist_ne(double dir, t_data *data);
 double			get_dist_nw(double dir, t_data *data);
 double			get_dist_sw(double dir, t_data *data);
 double			get_dist_se(double dir, t_data *data);
+double			fisheye_d(double rel_dir);
 
 //mlx_draw.c
 void			my_pixel_put(t_imgdata *data, int x, int y, int color);
 
 //mlx_hooks.c
-int				cb_close(int keycode, t_data *data);
+int				cb_keypress(int keycode, t_data *data);
+
+//cb_close.c
+int				cb_close(t_data *data);
+
+//next_frame.c
+int				next_frame(t_data *data);
+int				draw_col(int x, t_imgdata *img, t_data *data);
+int				get_rel_dir(int x);
+
+//ray_utils.c
+int				posmod(int a, int b);
 
 #endif

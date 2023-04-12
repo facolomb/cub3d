@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:46:57 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/10 17:38:34 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:45:53 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ double	t_get_dist(double dir, t_data *data)
 	else if ((dir >= 270) && (dir < 360))
 		return (get_dist_se(dir, data));
 	else
-		printf("Error\nWrong dir value.\n");
+		printf("Error\nWrong dir value.\ndir = %lf\n", dir);
 	return (-1);
 }
 

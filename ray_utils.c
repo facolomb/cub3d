@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_hooks.c                                        :+:      :+:    :+:   */
+/*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 19:31:26 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 11:45:01 by mravera          ###   ########.fr       */
+/*   Created: 2023/04/12 19:06:28 by mravera           #+#    #+#             */
+/*   Updated: 2023/04/12 20:04:22 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
 #include "parsing.h"
+#include "test.h"
 
-int	cb_keypress(int keycode, t_data *data)
+int	posmod(int a, int b)
 {
-	if (keycode == ESC)
-		cb_close(data);
-	return (0);
+	int	x;
+
+	x = a % b;
+	if (x >= 0)
+		return (x);
+	else
+		return (b + x);
 }

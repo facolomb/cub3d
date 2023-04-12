@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:21:51 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/06 22:41:20 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:53:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 # include <math.h>
 
 //# define WIN_WIDTH 1920
+/*
 # define WIN_WIDTH 600
 # define WIN_HEIGHT 600
 # define WALL_HEIGHT 64
 # define DIR_STEP 1
 # define X_STEP 0.1
 # define Y_STEP 0.1
+*/
 
 typedef struct s_img
 {

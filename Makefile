@@ -21,6 +21,9 @@ SRC = test.c \
 		get_nsew_dist.c \
 		mlx_draw.c \
 		mlx_hooks.c \
+		cb_close.c \
+		next_frame.c \
+		ray_utils.c
 
 MLX_PATH = ./mlx
 
