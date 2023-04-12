@@ -6,40 +6,12 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 19:48:57 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 00:36:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
-
-int	testdist(t_data *data)
-{
-	int				x;
-	int				y;
-	t_imgdata		ima;
-
-	ima.img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	ima.addr = mlx_get_data_addr(ima.img, &ima.bpp, &ima.l_length, &ima.endian);
-	x = data->p_dir;
-	y = 0;
-	while (x < WIN_WIDTH)
-	{
-		printf("x1 = %d\n", x);
-		printf("x2 = %lf\n", (double)x / WIN_WIDTH * 360);
-		while (y < WIN_HEIGHT * t_get_dist((double)x / WIN_WIDTH * 360, data))
-		{
-			my_pixel_put(&ima, x, y, (int)0x00FF0000);
-			y ++;
-		}
-		while (y < WIN_HEIGHT)
-			my_pixel_put(&ima, x, y++, (int)0x0000FF00);
-		y = 0;
-		x ++;
-	}
-	mlx_put_image_to_window(data->mlx, data->win, ima.img, 0, 0);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -60,7 +32,6 @@ int	main(int argc, char **argv)
 	printf("c = %s\n", data.c);
 	printf("f = %s\n\n", data.f);
 	printf("player x = %lf\n       y = %lf\n", data.player_x, data.player_y);
-	data.p_dir = 0;
 	printf("     dir = %d\n", data.p_dir);
 	t_get_dist(data.p_dir, &data);
 	while (data.map && data.map[i])
@@ -69,8 +40,7 @@ int	main(int argc, char **argv)
 	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "SUUU!");
 	mlx_hook(data.win, 2, 1L << 0, cb_keypress, &data);
 	mlx_hook(data.win, 17, 1L << 2, cb_close, &data);
-	next_frame(&data);
-	//mlx_loop_hook(data.mlx, next_frame, &data);
+	mlx_loop_hook(data.mlx, next_frame, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

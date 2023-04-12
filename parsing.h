@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 20:56:23 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 23:12:38 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include "libft/libft.h"
 
 //game
-# define WIN_WIDTH 600
+# define WIN_WIDTH 900
 # define WIN_HEIGHT 600
-# define WALL_RATIO 0.5
-# define FOV 60
+# define WALL_RATIO 0.25
+# define FOV 90
 # define SCREEN_DIST 1
-# define DIR_STEP 1
+# define DIR_STEP 5
 # define X_STEP 0.1
 # define Y_STEP 0.1
 
@@ -160,8 +160,8 @@ int				cb_set_player_pos(int x, int y, char dir, t_data *data);
 int				cb_flood(char **grid, int i, int j, t_data *data);
 
 //player_dir.c
-int				p_dirup(t_player *p);
-int				p_dirdown(t_player *p);
+int				p_dirup(t_data *data);
+int				p_dirdown(t_data *data);
 
 //player_move.c
 int				p_xup(t_player *p);

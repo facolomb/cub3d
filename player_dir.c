@@ -6,24 +6,23 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:52:05 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 14:54:40 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/12 23:00:34 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-int	p_dirup(t_player *p)
+int	p_dirup(t_data *data)
 {
-	p->dir += DIR_STEP;
-	if (p->dir >= 360)
-		p->dir = 0;
+	data->p_dir += DIR_STEP;
+	data->p_dir = data->p_dir % 360;
 	return (1);
 }
 
-int	p_dirdown(t_player *p)
+int	p_dirdown(t_data *data)
 {
-	p->dir -= DIR_STEP;
-	if (p->dir < 0)
-		p->dir = 360 - DIR_STEP;
+	data->p_dir -= DIR_STEP;
+	if (data->p_dir < 0)
+		data->p_dir = 360 + (data->p_dir % 360);
 	return (1);
 }
