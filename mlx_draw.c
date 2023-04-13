@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_distance.c                                    :+:      :+:    :+:   */
+/*   mlx_draw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 15:18:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/08 17:13:05 by mravera          ###   ########.fr       */
+/*   Created: 2023/04/11 18:56:01 by mravera           #+#    #+#             */
+/*   Updated: 2023/04/11 20:44:04 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-double	walldistance(t_data *data, double x, double y)
+void	my_pixel_put(t_imgdata *data, int x, int y, int color)
 {
-	double	a;
-	double	b;
-	double	c;
+	char	*dst;
 
-	a = x - data->player_x;
-	b = y - data->player_y;
-	c = sqrt(pow(a, 2) + pow(b, 2));
-	return (c);
+	dst = data->addr + (y * data->l_length + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
+	return ;
 }

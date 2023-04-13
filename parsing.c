@@ -6,39 +6,25 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/02 16:12:24 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/05 16:55:14 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "parsing.h"
 
-int	parsing(int argc, char **argv)
+int	parsing(int argc, char **argv, t_data *data)
 {
-	t_data	data;
 	int		fd;
-	int		i;
 
-	i = 0;
-	data = (t_data){0};
 	fd = check_cub(argc, argv);
-	parse(fd, &data);
+	parse(fd, data);
 	check_close(fd);
 	printf("\nChecking the map.\n");
-	if (data.map != NULL)
-		check_map(&data);
+	if (data->map != NULL)
+		check_map(data);
 	else
 		printf("Error\nNo map detected.\n");
-	printf("\n\n--------------DATAS--------------\n");
-	printf("no = %s\n", data.no);
-	printf("so = %s\n", data.so);
-	printf("ea = %s\n", data.ea);
-	printf("we = %s\n", data.we);
-	printf("c = %s\n", data.c);
-	printf("f = %s\n\n", data.f);
-	while (data.map && data.map[i])
-		printf("%s\n", data.map[i ++]);
-	free_data(&data);
 	return (0);
 }
 

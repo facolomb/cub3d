@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:46:20 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/02 16:08:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/08 17:13:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	cb_check_path(t_data *data)
 		i ++;
 	}
 	if (!cb_player_pos(data))
-		printf("player x = %d\n       y = %d\n", data->player_x, data->player_y);
-	temp[data->player_y][data->player_x] = '0';
+		printf("plyr x = %lf\nplyr y = %lf\n", data->player_x, data->player_y);
+	temp[(int)data->player_y][(int)data->player_x] = '0';
 	if (cb_flood(temp, data->player_x, data->player_y, data) < 0)
 		printf("Error\nThe provided map seems trouee\n");
 	else
@@ -74,8 +74,8 @@ int	cb_player_pos(t_data *data)
 			if (data->map[y][x] == 'N' || data->map[y][x] == 'S'
 				|| data->map[y][x] == 'E' || data->map[y][x] == 'W')
 			{
-				data->player_x = x;
-				data->player_y = y;
+				cb_set_player_pos(x, y, data->map[y][x], data);
+				data->map[y][x] = '0';
 				return (0);
 			}
 			x++;
@@ -85,6 +85,21 @@ int	cb_player_pos(t_data *data)
 	}
 	printf("Error while looking for the player position!\n");
 	return (1);
+}
+
+int	cb_set_player_pos(int x, int y, char dir, t_data *data)
+{
+	data->player_x = (double)x + 0.5;
+	data->player_y = (double)y + 0.5;
+	if (dir == 'N')
+		data->p_dir = 90;
+	else if (dir == 'W')
+		data->p_dir = 180;
+	else if (dir == 'S')
+		data->p_dir = 270;
+	else if (dir == 'E')
+		data->p_dir = 0;
+	return (0);
 }
 
 int	cb_flood(char **grid, int i, int j, t_data *data)
@@ -101,9 +116,6 @@ int	cb_flood(char **grid, int i, int j, t_data *data)
 	if (data->check_map || (grid[j][i] == '1') || (grid[j][i] == 'X'))
 		return (1);
 	grid[j][i] = 'X';
-	while (grid[y])
-		printf("%s\n", grid[y++]);
-	printf("\n____________________________________________\n\n");
 	cb_flood(grid, i, j + 1, data);
 	cb_flood(grid, i, j - 1, data);
 	cb_flood(grid, i + 1, j, data);

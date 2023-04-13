@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_distance.c                                    :+:      :+:    :+:   */
+/*   cb_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 15:18:29 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/08 17:13:05 by mravera          ###   ########.fr       */
+/*   Created: 2023/04/12 11:41:56 by mravera           #+#    #+#             */
+/*   Updated: 2023/04/12 11:42:55 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
 #include "parsing.h"
+#include "test.h"
 
-double	walldistance(t_data *data, double x, double y)
+int	cb_close(t_data *data)
 {
-	double	a;
-	double	b;
-	double	c;
-
-	a = x - data->player_x;
-	b = y - data->player_y;
-	c = sqrt(pow(a, 2) + pow(b, 2));
-	return (c);
+	mlx_destroy_window(data->mlx, data->win);
+	free_data(data);
+	exit(EXIT_SUCCESS);
+	return (0);
 }

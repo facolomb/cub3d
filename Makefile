@@ -14,6 +14,18 @@ SRC = test.c \
 		check_map.c \
 		is_map_closed.c \
 		cub_flood.c \
+		player_move.c \
+		player_dir.c \
+		t_raymain.c \
+		wall_distance.c \
+		get_nsew_dist.c \
+		mlx_draw.c \
+		mlx_hooks.c \
+		cb_close.c \
+		next_frame.c \
+		ray_utils.c \
+		get_nsew_border.c \
+		get_nsew_next.c
 
 MLX_PATH = ./mlx
 

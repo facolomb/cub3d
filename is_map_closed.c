@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:04:31 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/02 15:47:11 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/06 01:44:43 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	square_map(t_data *data)
 	char	*buf;
 
 	i = 0;
-	x = ft_tabmaxlen(data->map);
+	x = ft_tabmaxlen(data->map, data);
 	while (x && data->map[i])
 	{
 		if (ft_strlen(data->map[i]) < (size_t)x)
@@ -43,7 +43,7 @@ int	square_map(t_data *data)
 	return (i);
 }
 
-int	ft_tabmaxlen(char **tab)
+int	ft_tabmaxlen(char **tab, t_data *data)
 {
 	int	i;
 	int	j;
@@ -61,6 +61,8 @@ int	ft_tabmaxlen(char **tab)
 		j = 0;
 		i++;
 	}
+	data->mapmx = x;
+	data->mapmy = i;
 	return (x);
 }
 
