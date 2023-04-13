@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:46:57 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 18:45:53 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 00:57:01 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,14 @@ int	t_whatis(double x, double y, t_data *data)
 	if ((x / floor(x) == 1) && (y / floor(y) == 1))
 		if (data->map[(int)y - 1][(int)x - 1] == '1')
 			return (1);
-	return (0);
+	return (t_cekoi(x, y, data));
+}
+
+int	t_cekoi(double x, double y, t_data *data)
+{
+	if (data->map[(int)floor(y)][(int)floor(x)] == '1')
+		return (1);
+	else if (data->map[(int)floor(y)][(int)floor(x)] == '0')
+		return (0);
+	return (-1);
 }

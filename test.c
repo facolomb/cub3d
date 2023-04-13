@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 00:36:02 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 02:29:15 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	main(int argc, char **argv)
 	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "SUUU!");
 	mlx_hook(data.win, 2, 1L << 0, cb_keypress, &data);
 	mlx_hook(data.win, 17, 1L << 2, cb_close, &data);
+	mlx_hook(data.win, 6, 1L << 6, cb_mouse, &data);
+	mlx_hook(data.win, 4, 1L << 2, cb_mousepress, &data);
 	mlx_loop_hook(data.mlx, next_frame, &data);
 	mlx_loop(data.mlx);
 	return (0);

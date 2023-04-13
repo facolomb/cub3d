@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 23:12:38 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 02:29:00 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@
 # define WIN_HEIGHT 600
 # define WALL_RATIO 0.25
 # define FOV 90
-# define SCREEN_DIST 1
+# define P_SIZE 0.1
+# define SCREEN_DIST 0.1
 # define DIR_STEP 5
+# define MOUSE_SENS 0.3
 # define X_STEP 0.1
 # define Y_STEP 0.1
 
@@ -86,6 +88,8 @@ typedef struct s_data
 	char		**map;
 	int			mapmx;
 	int			mapmy;
+	int			mouse_x;
+	int			mouse_h;
 }	t_data;
 
 //gnl
@@ -162,6 +166,7 @@ int				cb_flood(char **grid, int i, int j, t_data *data);
 //player_dir.c
 int				p_dirup(t_data *data);
 int				p_dirdown(t_data *data);
+int				cb_mouse(int x, int y, t_data *data);
 
 //player_move.c
 int				p_xup(t_player *p);
@@ -172,6 +177,7 @@ int				p_ydown(t_player *p);
 //t_raymain.c
 double			t_get_dist(double dir, t_data *data);
 int				t_whatis(double x, double y, t_data *data);
+int				t_cekoi(double x, double y, t_data *data);
 
 //wall_distance.c
 double			walldistance(t_data *data, double x, double y);
@@ -188,6 +194,7 @@ void			my_pixel_put(t_imgdata *data, int x, int y, int color);
 
 //mlx_hooks.c
 int				cb_keypress(int keycode, t_data *data);
+int				cb_mousepress(int button, int x, int y, t_data *data);
 
 //cb_close.c
 int				cb_close(t_data *data);
