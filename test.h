@@ -64,4 +64,25 @@ typedef struct s_draw_line
 	float	y;
 }	t_draw_line;
 
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir;
+}	t_player;
+
+//player_dir.c
+int		p_dirup(t_player *p);
+int		p_dirdown(t_player *p);
+
+//player_move.c
+int		p_xup(t_player *p);
+int		p_yup(t_player *p);
+int		p_xdown(t_player *p);
+int		p_ydown(t_player *p);
+
+double wallDistance(t_player *player, int x, int y);
+
+int key_hook(int keycode, t_player *p);
+
 #endif

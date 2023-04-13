@@ -156,53 +156,27 @@ void	init_minimap(t_mlx *mlx, char **map)
 	}
 }
 
-void	init_window(t_mlx *mlx)
+int	main(void)
 {
-	int		count_w;
-	int		count_h;
+	t_mlx	mlx;
 
-	count_w = -1;
-	mlx->mlx_ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Test");
-	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	mlx->img.data = (int *) mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bpp, &mlx->img.size_l, &mlx->img.endian);
+	mlx.map = ft_calloc(sizeof (char *), 5);
+	mlx.map[0] = ft_strdup("11111");
+	mlx.map[1] = ft_strdup("10101");
+	mlx.map[2] = ft_strdup("10201");
+	mlx.map[3] = ft_strdup("11111");
+	init_window(&mlx);
+	init_minimap(&mlx, mlx.map);
+	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
+	mlx_loop(mlx.mlx_ptr);
 
-	while (++count_w < WIN_WIDTH)
-	{
-		count_h = -1;
-		while (++count_h < WIN_HEIGHT)
-		{
-			if (count_h < WIN_HEIGHT / 2)
-				mlx->img.data[count_h * WIN_WIDTH + count_w] = 0x2E4053;
-			else
-				mlx->img.data[count_h * WIN_WIDTH + count_w] = 0x1A5276;
-		}
-	}
+	free(mlx.map[0]);
+	free(mlx.map[1]);
+	free(mlx.map[2]);
+	free(mlx.map[3]);
+	free(mlx.map);
+	return (0);
 }
-
-
-//int	main(void)
-//{
-//	t_mlx	mlx;
-//
-//	mlx.map = ft_calloc(sizeof (char *), 5);
-//	mlx.map[0] = ft_strdup("11111");
-//	mlx.map[1] = ft_strdup("10101");
-//	mlx.map[2] = ft_strdup("10201");
-//	mlx.map[3] = ft_strdup("11111");
-//
-//	init_window(&mlx);
-//	init_minimap(&mlx, mlx.map);
-//	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
-//	mlx_loop(mlx.mlx_ptr);
-//
-//	free(mlx.map[0]);
-//	free(mlx.map[1]);
-//	free(mlx.map[2]);
-//	free(mlx.map[3]);
-//	free(mlx.map);
-//	return (0);
-//}
 
 void	display_map(t_mlx *mlx)
 {
