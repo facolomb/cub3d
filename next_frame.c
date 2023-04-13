@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:02:54 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 04:51:05 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:03:29 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	draw_col(int x, t_imgdata *img, t_data *data)
 
 	y = 0;
 	col_size = WALL_RATIO * WIN_HEIGHT
-		/ (t_get_dist(posmod((data->p_dir - get_rel_dir(x)), 360), data));
+		/ (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
 	if (col_size > WIN_HEIGHT)
 		while (y < col_size)
 			my_pixel_put(img, x, y++, 0x00FF0000);
@@ -56,7 +56,7 @@ int	draw_col(int x, t_imgdata *img, t_data *data)
 	return (0);
 }
 
-int	get_rel_dir(int x)
+double	get_rel_dir(int x)
 {
 	double	theta;
 
@@ -66,5 +66,5 @@ int	get_rel_dir(int x)
 		theta = -(FOV / 2 - ((double)x / WIN_WIDTH * FOV));
 	else
 		theta = (((double)x - (WIN_WIDTH / 2)) / WIN_WIDTH * FOV);
-	return ((int)round(theta));
+	return (round(theta));
 }

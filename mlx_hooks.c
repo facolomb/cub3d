@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:31:26 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 05:19:42 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:10:34 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	cb_keypress(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 		cb_close(data);
-	else if (keycode == W)
+	else if (keycode == W || keycode == ARROWUP)
 		p_up(data);
-	else if (keycode == S)
+	else if (keycode == S || keycode == ARROWDOWN)
 		p_dw(data);
-	else if (keycode == A)
+	else if (keycode == A || keycode == ARROWLEFT)
 		p_dirup(data);
-	else if (keycode == D)
+	else if (keycode == D || keycode == ARROWRIGHT)
 		p_dirdown(data);
 	return (0);
 }

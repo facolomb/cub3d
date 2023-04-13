@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 05:21:45 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:14:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # include "libft/libft.h"
 
 //game
-# define WIN_WIDTH 900
-# define WIN_HEIGHT 600
-# define WALL_RATIO 0.25
-# define FOV 90
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define WALL_RATIO 0.7
+# define FOV 60
 # define P_SIZE 0.1
 # define SCREEN_DIST 0.1
-# define DIR_STEP 5
+# define DIR_STEP 2
 # define MOUSE_SENS 0.3
 # define X_STEP 0.1
 # define Y_STEP 0.1
@@ -212,7 +212,7 @@ int				cb_close(t_data *data);
 //next_frame.c
 int				next_frame(t_data *data);
 int				draw_col(int x, t_imgdata *img, t_data *data);
-int				get_rel_dir(int x);
+double			get_rel_dir(int x);
 
 //ray_utils.c
 double			dblmod(double a);
