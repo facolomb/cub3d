@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 02:29:00 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 05:21:45 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ typedef struct s_data
 	t_player	p;
 	double		player_x;
 	double		player_y;
-	int			p_dir;
+	double		p_dir;
 	int			check_map;
 	char		**map;
 	int			mapmx;
 	int			mapmy;
-	int			mouse_x;
 	int			mouse_h;
+	double		ray[2];
 }	t_data;
 
 //gnl
@@ -169,10 +169,8 @@ int				p_dirdown(t_data *data);
 int				cb_mouse(int x, int y, t_data *data);
 
 //player_move.c
-int				p_xup(t_player *p);
-int				p_yup(t_player *p);
-int				p_xdown(t_player *p);
-int				p_ydown(t_player *p);
+int				p_up(t_data *data);
+int				p_dw(t_data *data);
 
 //t_raymain.c
 double			t_get_dist(double dir, t_data *data);
@@ -188,6 +186,18 @@ double			get_dist_nw(double dir, t_data *data);
 double			get_dist_sw(double dir, t_data *data);
 double			get_dist_se(double dir, t_data *data);
 double			fisheye_d(double rel_dir);
+
+//get_nsew_border.c
+int				get_border_ne(double dir, t_data *data);
+int				get_border_nw(double dir, t_data *data);
+int				get_border_sw(double dir, t_data *data);
+int				get_border_se(double dir, t_data *data);
+
+//get_nsew_next.c
+int				get_next_ne(double dir, t_data *data);
+int				get_next_nw(double dir, t_data *data);
+int				get_next_sw(double dir, t_data *data);
+int				get_next_se(double dir, t_data *data);
 
 //mlx_draw.c
 void			my_pixel_put(t_imgdata *data, int x, int y, int color);
@@ -205,6 +215,7 @@ int				draw_col(int x, t_imgdata *img, t_data *data);
 int				get_rel_dir(int x);
 
 //ray_utils.c
+double			dblmod(double a);
 int				posmod(int a, int b);
 
 #endif

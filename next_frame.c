@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:02:54 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/12 23:35:05 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/13 04:51:05 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	next_frame(t_data *data)
 		draw_col(x, &ima, data);
 		x ++;
 	}
+	printf("p_dir = %lf\n", data->p_dir);
+	printf("px = %lf\npy = %lf\n", data->player_x, data->player_y);
 	mlx_put_image_to_window(data->mlx, data->win, ima.img, 0, 0);
 	mlx_destroy_image(data->mlx, ima.img);
 	return (0);

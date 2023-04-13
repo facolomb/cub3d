@@ -23,7 +23,9 @@ SRC = test.c \
 		mlx_hooks.c \
 		cb_close.c \
 		next_frame.c \
-		ray_utils.c
+		ray_utils.c \
+		get_nsew_border.c \
+		get_nsew_next.c
 
 MLX_PATH = ./mlx
 
@@ -33,7 +35,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS = -g -Wall -Werror -Wextra -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 
