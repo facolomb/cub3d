@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:08:16 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 04:16:28 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 16:46:45 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ double	fisheye_d(double rel_dir)
 	double	theta;
 
 	theta = rel_dir * M_PI / 180;
-	res = SCREEN_DIST / cos(theta);
-	return (res);
+	res = sin(theta + M_PI_2);
+	return (res * FISHEYE_RATIO);
 }

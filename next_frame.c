@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:02:54 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 04:36:00 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:30:26 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	draw_col(int x, t_imgdata *img, t_data *data)
 	else
 	{
 		while (y < (WIN_HEIGHT - col_size) / 2)
-			my_pixel_put(img, x, y++, str_color(data->f));
+			my_pixel_put(img, x, y++, data->c_color);
 		while (y < (col_size + ((WIN_HEIGHT - col_size) / 2)))
 			my_pixel_put(img, x, y++, str_color(NULL));
 		while (y < WIN_HEIGHT)
-			my_pixel_put(img, x, y++, str_color(data->c));
+			my_pixel_put(img, x, y++, data->f_color);
 	}
 	return (0);
 }
@@ -68,5 +68,5 @@ double	get_rel_dir(int x)
 		theta = -(FOV / 2 - ((double)x / WIN_WIDTH * FOV));
 	else
 		theta = (((double)x - (WIN_WIDTH / 2)) / WIN_WIDTH * FOV);
-	return (round(theta));
+	return (theta);
 }

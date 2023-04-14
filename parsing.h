@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 03:25:52 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 16:18:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 //game
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define WALL_RATIO 0.7
-# define FOV 60
+# define WALL_RATIO 0.5
+# define FOV 90
 # define P_SIZE 0.1
-# define SCREEN_DIST 0.1
+# define FISHEYE_RATIO 4
 # define DIR_STEP 3
 # define MOUSE_SENS 0.2
 # define X_STEP 0.05
@@ -82,6 +82,8 @@ typedef struct s_data
 	char		*ea;
 	char		*f;
 	char		*c;
+	int			f_color;
+	int			c_color;
 	t_player	p;
 	double		player_x;
 	double		player_y;

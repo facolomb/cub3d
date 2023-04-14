@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 03:25:59 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 13:09:16 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 	printf("so = %s\n", data.so);
 	printf("ea = %s\n", data.ea);
 	printf("we = %s\n", data.we);
-	printf("c = %s\n", data.c);
-	printf("f = %s\n\n", data.f);
+	printf("c = %d\n", data.c_color);
+	printf("f = %d\n\n", data.f_color);
 	printf("player x = %lf\n       y = %lf\n", data.player_x, data.player_y);
 	printf("     dir = %lf\n", data.p_dir);
 	while (data.map && data.map[i])

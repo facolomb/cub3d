@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 02:51:32 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 03:09:05 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:03:56 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_border_nw(double dir, t_data *data)
 	a[1] = data->player_y;
 	b[0] = a[0];
 	b[1] = a[1];
-	a[1] = a[1] - (tan(2 * M_PI - theta) * (ceil(a[0]) - a[0]));
+	a[1] = a[1] - (tan(2 * M_PI - theta) * (a[0] - floor(a[0])));
 	a[0] = floor(a[0]);
 	b[0] = -((b[1] - floor(b[1])) / tan(2 * M_PI - theta)) + b[0];
 	b[1] = floor(b[1]);

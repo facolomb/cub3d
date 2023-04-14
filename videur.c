@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:53:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/01 02:21:19 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 13:05:25 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	sort_fc(char **str, t_data *data)
 	if (check_rgb(str))
 	{
 		if (!ft_strncmp(str[0], "F", 2))
-			data->f = ft_strdup(str[1]);
+			data->f_color = str_color(str[1]);
 		if (!ft_strncmp(str[0], "C", 2))
-			data->c = ft_strdup(str[1]);
+			data->c_color = str_color(str[1]);
 		printf("\n[%s->%s] OK\n", str[0], str[1]);
 	}
 	return (0);
