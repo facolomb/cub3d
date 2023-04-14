@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:02:54 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 14:03:29 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 04:36:00 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,24 @@ int	next_frame(t_data *data)
 int	draw_col(int x, t_imgdata *img, t_data *data)
 {
 	int		y;
+	double	dist;
 	double	col_size;
 
 	y = 0;
+	dist = (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
 	col_size = WALL_RATIO * WIN_HEIGHT
-		/ (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
+		/ dist;
 	if (col_size > WIN_HEIGHT)
-		while (y < col_size)
-			my_pixel_put(img, x, y++, 0x00FF0000);
+		while (y < WIN_HEIGHT)
+			my_pixel_put(img, x, y++, str_color(NULL));
 	else
 	{
 		while (y < (WIN_HEIGHT - col_size) / 2)
-			my_pixel_put(img, x, y++, 0x000000FF);
+			my_pixel_put(img, x, y++, str_color(data->f));
 		while (y < (col_size + ((WIN_HEIGHT - col_size) / 2)))
-			my_pixel_put(img, x, y++, 0x00FF0000);
+			my_pixel_put(img, x, y++, str_color(NULL));
 		while (y < WIN_HEIGHT)
-			my_pixel_put(img, x, y++, 0x0000FF00);
+			my_pixel_put(img, x, y++, str_color(data->c));
 	}
 	return (0);
 }

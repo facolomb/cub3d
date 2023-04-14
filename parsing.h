@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/13 14:14:20 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 03:25:52 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 # define FOV 60
 # define P_SIZE 0.1
 # define SCREEN_DIST 0.1
-# define DIR_STEP 2
-# define MOUSE_SENS 0.3
-# define X_STEP 0.1
-# define Y_STEP 0.1
+# define DIR_STEP 3
+# define MOUSE_SENS 0.2
+# define X_STEP 0.05
+# define Y_STEP 0.05
 
 //keycode for MAC
 # define ESC 53
@@ -47,6 +47,8 @@
 # define A 0
 # define S 1
 # define D 2
+# define Q 12
+# define E 14
 
 typedef struct s_imgdata
 {
@@ -171,6 +173,8 @@ int				cb_mouse(int x, int y, t_data *data);
 //player_move.c
 int				p_up(t_data *data);
 int				p_dw(t_data *data);
+int				p_left(t_data *data);
+int				p_right(t_data *data);
 
 //t_raymain.c
 double			t_get_dist(double dir, t_data *data);
@@ -217,5 +221,9 @@ double			get_rel_dir(int x);
 //ray_utils.c
 double			dblmod(double a);
 int				posmod(int a, int b);
+
+//cb_colors.c
+int				create_trgb(int t, int r, int g, int b);
+int				str_color(char *s);
 
 #endif

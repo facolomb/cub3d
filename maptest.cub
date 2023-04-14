@@ -4,10 +4,11 @@
 
      laskjdflkajsddflj
 NO ./img/xpm.xp = oui
-
+F 160,100,200
 S    ./img/xpm.xpm
 s ./oui.xpm
 No ./oui
+C 125,190,255
 N ./img/xpm2.xpm
 
 111111

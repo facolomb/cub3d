@@ -25,7 +25,8 @@ SRC = test.c \
 		next_frame.c \
 		ray_utils.c \
 		get_nsew_border.c \
-		get_nsew_next.c
+		get_nsew_next.c \
+		cb_colors.c
 
 MLX_PATH = ./mlx
 
