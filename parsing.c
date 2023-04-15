@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:04:08 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/05 16:55:14 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 05:17:16 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	parsing(int argc, char **argv, t_data *data)
 	if (data->map != NULL)
 		check_map(data);
 	else
+	{
 		printf("Error\nNo map detected.\n");
+		data->dead = 1;
+	}
 	return (0);
 }
 
@@ -52,7 +55,7 @@ int	parse(int fd, t_data *data)
 		buf = get_next_line(fd);
 	}
 	if (buf != NULL && !is_map(buf))
-		cub_printmap(buf);
+		cub_printmap(buf, data);
 	return (0);
 }
 
@@ -71,9 +74,10 @@ int	is_line(char *line)
 		return (0);
 }
 
-int	cub_printmap(char *str)
+int	cub_printmap(char *str, t_data *data)
 {
 	printf("Error\nMap not at the end of file.\n");
+	data->dead = 1;
 	free(str);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:30:27 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/09 18:26:38 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 05:47:53 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,19 @@ int	check_strmap(char *str)
 	return (x);
 }
 
-int	print_maperr(void)
+int	print_maperr(t_data *data)
 {
 	printf("\nError\nWrong char in map.\n");
+	data->dead = 1;
 	return (-1);
 }
 
-int	print_nsew(int x)
+int	print_nsew(int x, t_data *data)
 {
 	if (x == 0)
 		printf("Error\nNo NSEW char in map.\n");
 	else
 		printf("Error\nToo many NSEW char in map [%d]\n", x);
+	data->dead = 1;
 	return (0);
 }

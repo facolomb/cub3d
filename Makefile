@@ -1,4 +1,4 @@
-NAME = test
+NAME = cub3D
 
 SRC = test.c \
 		parsing.c \
@@ -38,6 +38,7 @@ LIBFT_PATH = ./libft
 LIBFT = ./libft/libft.a
 
 CFLAGS = -ofast -Wall -Werror -Wextra 
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
@@ -46,6 +47,9 @@ $(NAME): $(OBJ)
 		make -C mlx
 		make -C libft
 		gcc $(CFLAGS) -I $(MLX_PATH) $(OBJ) $(LIBFT) -L $(MLX_PATH) -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+
+%.o : %.c
+		gcc $(CFLAGS) -c $< -o $@
 
 clean:
 		make -C mlx clean

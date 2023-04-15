@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 23:05:18 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 05:13:51 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,18 @@ void	printab(char **tab)
 	while (tab[i])
 		printf("%s\n", tab[i++]);
 	return ;
+}
+
+int	disp_data(t_data *data)
+{
+	printf("\n\n--------------DATAS--------------\n");
+	printf("no = %p\n", data->im_no.addr);
+	printf("so = %p\n", data->im_so.addr);
+	printf("ea = %p\n", data->im_ea.addr);
+	printf("we = %p\n", data->im_we.addr);
+	printf("c = %d\n", data->c_color);
+	printf("f = %d\n\n", data->f_color);
+	printf("player x = %lf\n       y = %lf\n", data->player_x, data->player_y);
+	printf("     dir = %lf\n", data->p_dir);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:46:20 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/08 17:13:48 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 05:58:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@
 int	cb_check_path(t_data *data)
 {
 	char	**temp;
-	int		i;
 
-	i = 0;
 	if (!data->map || !data->map[0])
 		return (0);
 	temp = cb_dup_map(data);
-	printf("\n____test cpy map____\n");
-	while (data->map[i])
-	{
-		printf("%s\n", data->map[i]);
-		i ++;
-	}
 	if (!cb_player_pos(data))
 		printf("plyr x = %lf\nplyr y = %lf\n", data->player_x, data->player_y);
 	temp[(int)data->player_y][(int)data->player_x] = '0';
 	if (cb_flood(temp, data->player_x, data->player_y, data) < 0)
+	{
+		data->dead = 1;
 		printf("Error\nThe provided map seems trouee\n");
+	}
 	else
 		printf("Provided map seems good\n");
 	freetab(temp);

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/15 03:48:57 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 05:48:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_data
 	int			mapmy;
 	int			mouse_h;
 	double		ray[2];
+	int			dead;
 }	t_data;
 
 //gnl
@@ -113,7 +114,7 @@ char			*ft_read_and_save(int fd, char *frigo);
 int				parsing(int argc, char **argv, t_data *data);
 int				parse(int fd, t_data *data);
 int				is_line(char *line);
-int				cub_printmap(char *str);
+int				cub_printmap(char *str, t_data *data);
 
 //videur.c
 int				videur(char **buf, t_data *data);
@@ -143,6 +144,7 @@ int				set_texture(t_imgdata *img, char *file, t_data *data);
 void			freetab(char **tab);
 int				free_data(t_data *data);
 void			printab(char **tab);
+int				disp_data(t_data *data);
 
 //get_clean_buf.c
 char			**get_clean_buf(char *buf);
@@ -152,8 +154,8 @@ char			*rm_lastbsn(char *str);
 int				is_map(char *str);
 int				is_mapkey(char c);
 int				check_strmap(char *str);
-int				print_maperr(void);
-int				print_nsew(int x);
+int				print_maperr(t_data *data);
+int				print_nsew(int x, t_data *data);
 
 //check_map.c
 int				check_map(t_data *data);
@@ -216,6 +218,7 @@ int				pixel_get(t_imgdata *data, double x_ratio, double y_ratio);
 //mlx_hooks.c
 int				cb_keypress(int keycode, t_data *data);
 int				cb_mousepress(int button, int x, int y, t_data *data);
+int				mlx_set_hooks(t_data *data);
 
 //cb_close.c
 int				cb_close(t_data *data);
