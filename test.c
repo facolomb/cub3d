@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:38 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 13:09:16 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 02:31:53 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	data = (t_data){0};
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "SUUU!");
 	if (argc > 1)
 		parsing(argc, argv, &data);
 	else
 		printf("Error\nNeed a .cub configuration file as argument\n");
 	printf("\n\n--------------DATAS--------------\n");
-	printf("no = %s\n", data.no);
-	printf("so = %s\n", data.so);
-	printf("ea = %s\n", data.ea);
-	printf("we = %s\n", data.we);
+	printf("no = %p\n", data.im_no.addr);
+	printf("so = %p\n", data.im_so.addr);
+	printf("ea = %p\n", data.im_ea.addr);
+	printf("we = %p\n", data.im_we.addr);
 	printf("c = %d\n", data.c_color);
 	printf("f = %d\n\n", data.f_color);
 	printf("player x = %lf\n       y = %lf\n", data.player_x, data.player_y);
 	printf("     dir = %lf\n", data.p_dir);
 	while (data.map && data.map[i])
 		printf("%s\n", data.map[i ++]);
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "SUUU!");
 	mlx_hook(data.win, 2, 1L << 0, cb_keypress, &data);
 	mlx_hook(data.win, 17, 1L << 2, cb_close, &data);
 	mlx_hook(data.win, 6, 1L << 6, cb_mouse, &data);

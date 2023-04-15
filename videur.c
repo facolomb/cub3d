@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:53:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 13:05:25 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 23:03:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	sort_nsew(char **str, t_data *data)
 	if (check_xpm(str) && !alrdy_set(str, data))
 	{
 		if (!ft_strncmp(str[0], "N", 2) || !ft_strncmp(str[0], "NO", 3))
-			data->no = ft_strdup(str[1]);
+			set_texture(&(data->im_no), str[1], data);
 		if (!ft_strncmp(str[0], "S", 2) || !ft_strncmp(str[0], "SO", 3))
-			data->so = ft_strdup(str[1]);
+			set_texture(&(data->im_so), str[1], data);
 		if (!ft_strncmp(str[0], "E", 2) || !ft_strncmp(str[0], "EA", 3))
-			data->ea = ft_strdup(str[1]);
+			set_texture(&(data->im_ea), str[1], data);
 		if (!ft_strncmp(str[0], "W", 2) || !ft_strncmp(str[0], "WE", 3))
-			data->we = ft_strdup(str[1]);
+			set_texture(&(data->im_we), str[1], data);
 		printf("[%s->%s] OK\n", str[0], str[1]);
 	}
 	return (0);

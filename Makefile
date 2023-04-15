@@ -26,7 +26,8 @@ SRC = test.c \
 		ray_utils.c \
 		get_nsew_border.c \
 		get_nsew_next.c \
-		cb_colors.c
+		cb_colors.c \
+		get_textures.c \
 
 MLX_PATH = ./mlx
 
@@ -36,8 +37,7 @@ LIBFT_PATH = ./libft
 
 LIBFT = ./libft/libft.a
 
-CFLAGS = -g -Wall -Werror -Wextra #-fsanitize=address
-
+CFLAGS = -ofast -Wall -Werror -Wextra 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

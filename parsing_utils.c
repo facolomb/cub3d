@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:57:40 by mravera           #+#    #+#             */
-/*   Updated: 2023/03/03 16:31:13 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 23:03:21 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,18 @@ int	alrdy_set(char **str, t_data *data)
 	else if ((!ft_strncmp(str[0], "W", 2) || !ft_strncmp(str[0], "WE", 3))
 		&& data->we != 0)
 		return (printf("\n[%s->%s]\nTexture already set.\n", str[0], str[1]));
-	else if (!ft_strncmp(str[0], "F", 2) && data->f != 0)
+	else if (!ft_strncmp(str[0], "F", 2) && data->f_color != 0)
 		return (printf("\n[%s->%s]\nF color already set.\n", str[0], str[1]));
-	else if (!ft_strncmp(str[0], "C", 2) && data->c != 0)
+	else if (!ft_strncmp(str[0], "C", 2) && data->c_color != 0)
 		return (printf("\n[%s->%s]\nC color already set.\n", str[0], str[1]));
 	return (0);
+}
+
+int	set_texture(t_imgdata *img, char *path, t_data *data)
+{
+	img->img = mlx_xpm_file_to_image(data->mlx, path, &(img->img_width),
+			&(img->img_height));
+	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->l_length),
+			&(img->endian));
+	return (1);
 }

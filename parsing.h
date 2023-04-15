@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:18:03 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 16:18:20 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 03:48:57 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 # define P_SIZE 0.1
 # define FISHEYE_RATIO 4
 # define DIR_STEP 3
-# define MOUSE_SENS 0.2
-# define X_STEP 0.05
-# define Y_STEP 0.05
+# define MOUSE_SENS 0.1
+# define X_STEP 0.08
+# define Y_STEP 0.08
 
 //keycode for MAC
 # define ESC 53
@@ -57,6 +57,8 @@ typedef struct s_imgdata
 	int		bpp;
 	int		l_length;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }	t_imgdata;
 
 typedef struct s_vars
@@ -80,8 +82,10 @@ typedef struct s_data
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		*f;
-	char		*c;
+	t_imgdata	im_no;
+	t_imgdata	im_so;
+	t_imgdata	im_we;
+	t_imgdata	im_ea;
 	int			f_color;
 	int			c_color;
 	t_player	p;
@@ -131,9 +135,9 @@ int				is_cub(char *str);
 //parsing_utils.c
 int				is_nsewkey(char *str);
 int				is_fckey(char *str);
-int				is_map(char *str);
 int				str_isdigit(char *str);
 int				alrdy_set(char **str, t_data *data);
+int				set_texture(t_imgdata *img, char *file, t_data *data);
 
 //cub_utils.c
 void			freetab(char **tab);
@@ -207,6 +211,7 @@ int				get_next_se(double dir, t_data *data);
 
 //mlx_draw.c
 void			my_pixel_put(t_imgdata *data, int x, int y, int color);
+int				pixel_get(t_imgdata *data, double x_ratio, double y_ratio);
 
 //mlx_hooks.c
 int				cb_keypress(int keycode, t_data *data);
@@ -227,5 +232,10 @@ int				posmod(int a, int b);
 //cb_colors.c
 int				create_trgb(int t, int r, int g, int b);
 int				str_color(char *s);
+
+//get_textures.c
+int				get_color(int y, double col_s, t_data *data);
+double			get_x(t_data *data);
+double			get_y(int y, double col_s);
 
 #endif

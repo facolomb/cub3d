@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:59:39 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/02 15:33:12 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/14 23:05:18 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ int	free_data(t_data *data)
 		free(data->ea);
 	if (data->we != NULL)
 		free(data->we);
-	if (data->c != NULL)
-		free(data->c);
-	if (data->f != NULL)
-		free(data->f);
 	if (data->map != NULL)
 		freetab(data->map);
+	if (data->im_no.img != NULL)
+		mlx_destroy_image(data->mlx, data->im_no.img);
+	if (data->im_so.img != NULL)
+		mlx_destroy_image(data->mlx, data->im_so.img);
+	if (data->im_we.img != NULL)
+		mlx_destroy_image(data->mlx, data->im_we.img);
+	if (data->im_ea.img != NULL)
+		mlx_destroy_image(data->mlx, data->im_ea.img);
 	return (0);
 }
 

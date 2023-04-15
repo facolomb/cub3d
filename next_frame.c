@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:02:54 by mravera           #+#    #+#             */
-/*   Updated: 2023/04/14 15:30:26 by mravera          ###   ########.fr       */
+/*   Updated: 2023/04/15 04:10:58 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	next_frame(t_data *data)
 		draw_col(x, &ima, data);
 		x ++;
 	}
-	printf("p_dir = %lf\n", data->p_dir);
-	printf("px = %lf\npy = %lf\n", data->player_x, data->player_y);
+	//printf("posx = %lf\nposy = %lf\n", data->player_x, data->player_y);
 	mlx_put_image_to_window(data->mlx, data->win, ima.img, 0, 0);
 	mlx_destroy_image(data->mlx, ima.img);
 	return (0);
@@ -36,25 +35,29 @@ int	next_frame(t_data *data)
 int	draw_col(int x, t_imgdata *img, t_data *data)
 {
 	int		y;
-	double	dist;
 	double	col_size;
 
 	y = 0;
-	dist = (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
 	col_size = WALL_RATIO * WIN_HEIGHT
-		/ dist;
-	if (col_size > WIN_HEIGHT)
-		while (y < WIN_HEIGHT)
-			my_pixel_put(img, x, y++, str_color(NULL));
-	else
+		/ (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
+	if (col_size >= WIN_HEIGHT)
 	{
-		while (y < (WIN_HEIGHT - col_size) / 2)
-			my_pixel_put(img, x, y++, data->c_color);
-		while (y < (col_size + ((WIN_HEIGHT - col_size) / 2)))
-			my_pixel_put(img, x, y++, str_color(NULL));
 		while (y < WIN_HEIGHT)
-			my_pixel_put(img, x, y++, data->f_color);
+		{
+			my_pixel_put(img, x, y, get_color(y, col_size, data));
+			y++;
+		}
+		return (0);
 	}
+	while (y < (WIN_HEIGHT - col_size) / 2)
+		my_pixel_put(img, x, y++, data->c_color);
+	while (y < (col_size + ((WIN_HEIGHT - col_size) / 2)))
+	{
+		my_pixel_put(img, x, y, get_color(y, col_size, data));
+		y++;
+	}
+	while (y < WIN_HEIGHT)
+		my_pixel_put(img, x, y++, data->f_color);
 	return (0);
 }
 
