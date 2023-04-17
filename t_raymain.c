@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 double	t_get_dist(double dir, t_data *data)
 {
@@ -25,7 +24,7 @@ double	t_get_dist(double dir, t_data *data)
 		return (get_dist_se(dir, data));
 	else
 		printf("Error\nWrong dir value.\ndir = %lf\n", dir);
-	return (-1);
+	return (1);
 }
 
 int	t_whatis(double x, double y, t_data *data)

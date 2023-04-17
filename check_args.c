@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	check_cub(int argc, char **argv)
 {
@@ -80,4 +79,14 @@ int	is_cub(char *str)
 		return (1);
 	else
 		return (0);
+}
+
+void	check_datas(t_data *data)
+{
+	if (data->im_no.addr == NULL || data->im_so.addr == NULL
+		|| data->im_ea.addr == NULL || data->im_we.addr == NULL)
+	{
+		printf("Error\nIncorrect Texture\n");
+		cb_close(data);
+	}
 }

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	videur(char **buf, t_data *data)
 {

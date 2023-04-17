@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "test.h"
+#include "cub3d.h"
 
 int	next_frame(t_data *data)
 {
@@ -37,8 +36,8 @@ int	draw_col(int x, t_imgdata *img, t_data *data)
 	double	col_size;
 
 	y = 0;
-	col_size = WALL_RATIO * WIN_HEIGHT
-		/ (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data));
+	col_size = WALL_RATIO * WIN_HEIGHT / (cos(get_rel_dir(x) / 180 * M_PI)
+			* (t_get_dist(dblmod(data->p_dir - get_rel_dir(x)), data)));
 	if (col_size >= WIN_HEIGHT)
 	{
 		while (y < WIN_HEIGHT)

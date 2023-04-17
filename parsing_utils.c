@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	is_nsewkey(char *str)
 {

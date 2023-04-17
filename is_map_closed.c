@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	is_map_closed(t_data *data)
 {

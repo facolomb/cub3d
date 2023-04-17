@@ -10,14 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "test.h"
+#include "cub3d.h"
 
 double	dblmod(double a)
 {
-	double	b;
-
-	b = 360;
 	while (a <= -360)
 		a += 360;
 	while (a >= 360)
@@ -31,13 +27,14 @@ double	dblmod(double a)
 	return (a);
 }
 
-int	posmod(int a, int b)
+double	walldistance(t_data *data, double x, double y)
 {
-	int	x;
+	double	a;
+	double	b;
+	double	c;
 
-	x = a % b;
-	if (x >= 0)
-		return (x);
-	else
-		return (b + x);
+	a = x - data->player_x;
+	b = y - data->player_y;
+	c = sqrt(pow(a, 2) + pow(b, 2));
+	return (c);
 }

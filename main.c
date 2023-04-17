@@ -9,16 +9,12 @@
 /*   Updated: 2023/04/15 05:54:09 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	int			i;
 
-	i = 0;
 	data = (t_data){0};
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
@@ -32,6 +28,7 @@ int	main(int argc, char **argv)
 	if (data.dead == 1)
 		cb_close(&data);
 	disp_data(&data);
+	check_datas(&data);
 	mlx_set_hooks(&data);
 	mlx_loop_hook(data.mlx, next_frame, &data);
 	mlx_loop(data.mlx);

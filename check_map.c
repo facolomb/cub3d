@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 int	check_map(t_data *data)
 {
@@ -33,7 +32,6 @@ int	check_map(t_data *data)
 	if (x >= 0 && x != 1)
 		return (print_nsew(x, data));
 	square_map(data);
-	printf("\nis_map_closed\n");
 	is_map_closed(data);
 	return (0);
 }

@@ -1,6 +1,6 @@
 NAME = cub3D
 
-SRC = test.c \
+SRC = main.c \
 		parsing.c \
 		cub_gnl.c \
 		cub_gnl_utils.c \
@@ -17,7 +17,6 @@ SRC = test.c \
 		player_move.c \
 		player_dir.c \
 		t_raymain.c \
-		wall_distance.c \
 		get_nsew_dist.c \
 		mlx_draw.c \
 		mlx_hooks.c \

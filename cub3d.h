@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include "test.h"
+# include <stdio.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 
@@ -29,7 +29,7 @@
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 # define WALL_RATIO 0.5
-# define FOV 90
+# define FOV 60
 # define P_SIZE 0.1
 # define FISHEYE_RATIO 4
 # define DIR_STEP 3
@@ -61,19 +61,6 @@ typedef struct s_imgdata
 	int		img_height;
 }	t_imgdata;
 
-typedef struct s_vars
-{
-	void		*mlx;
-	void		*win;
-}	t_vars;
-
-typedef struct s_player
-{
-	double	pos_x;
-	double	pos_y;
-	double	dir;
-}	t_player;
-
 typedef struct s_data
 {
 	void		*mlx;
@@ -88,7 +75,6 @@ typedef struct s_data
 	t_imgdata	im_ea;
 	int			f_color;
 	int			c_color;
-	t_player	p;
 	double		player_x;
 	double		player_y;
 	double		p_dir;
@@ -132,6 +118,7 @@ int				check_cub(int argc, char **argv);
 int				check_open(char *file);
 int				check_close(int fd);
 int				is_cub(char *str);
+void			check_datas(t_data *data);
 
 //parsing_utils.c
 int				is_nsewkey(char *str);
@@ -143,7 +130,6 @@ int				set_texture(t_imgdata *img, char *file, t_data *data);
 //cub_utils.c
 void			freetab(char **tab);
 int				free_data(t_data *data);
-void			printab(char **tab);
 int				disp_data(t_data *data);
 
 //get_clean_buf.c
@@ -189,9 +175,6 @@ double			t_get_dist(double dir, t_data *data);
 int				t_whatis(double x, double y, t_data *data);
 int				t_cekoi(double x, double y, t_data *data);
 
-//wall_distance.c
-double			walldistance(t_data *data, double x, double y);
-
 //get_nsew_dist.c
 double			get_dist_ne(double dir, t_data *data);
 double			get_dist_nw(double dir, t_data *data);
@@ -230,7 +213,7 @@ double			get_rel_dir(int x);
 
 //ray_utils.c
 double			dblmod(double a);
-int				posmod(int a, int b);
+double			walldistance(t_data *data, double x, double y);
 
 //cb_colors.c
 int				create_trgb(int t, int r, int g, int b);

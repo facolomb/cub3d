@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-#include "parsing.h"
+#include "cub3d.h"
 
 void	freetab(char **tab)
 {
@@ -47,16 +46,6 @@ int	free_data(t_data *data)
 	if (data->im_ea.img != NULL)
 		mlx_destroy_image(data->mlx, data->im_ea.img);
 	return (0);
-}
-
-void	printab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		printf("%s\n", tab[i++]);
-	return ;
 }
 
 int	disp_data(t_data *data)

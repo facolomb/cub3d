@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "test.h"
+#include "cub3d.h"
 
 int	get_color(int y, double col_s, t_data *data)
 {

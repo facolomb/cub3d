@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "test.h"
+#include "cub3d.h"
 
 int	get_border_ne(double dir, t_data *data)
 {

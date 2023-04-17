@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "test.h"
+#include "cub3d.h"
 
 int	cb_close(t_data *data)
 {
