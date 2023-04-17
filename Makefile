@@ -1,32 +1,32 @@
 NAME = cub3D
 
 SRC = main.c \
-		parsing.c \
+		cb_close.c \
+		cb_colors.c \
+		check_args.c \
+		check_map.c \
+		cub_flood.c \
 		cub_gnl.c \
 		cub_gnl_utils.c \
-		check_args.c \
-		videur.c \
 		cub_utils.c \
 		get_clean_buf.c \
-		parsing_utils.c \
-		map_utils.c \
 		get_map.c \
-		check_map.c \
-		is_map_closed.c \
-		cub_flood.c \
-		player_move.c \
-		player_dir.c \
-		t_raymain.c \
+		get_nsew_border.c \
 		get_nsew_dist.c \
+		get_nsew_next.c \
+		get_textures.c \
+		is_map_closed.c \
+		map_utils.c \
 		mlx_draw.c \
 		mlx_hooks.c \
-		cb_close.c \
 		next_frame.c \
+		parsing.c \
+		parsing_utils.c \
+		player_dir.c \
+		player_move.c \
 		ray_utils.c \
-		get_nsew_border.c \
-		get_nsew_next.c \
-		cb_colors.c \
-		get_textures.c \
+		t_raymain.c \
+		videur.c \
 
 MLX_PATH = ./mlx
 
